@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Open University of Israel | ONLP Lab | Hebrew Parser{% endblock %}
+{% load staticfiles %}
+{% block content %}
+
+<h3 class="page-title">Morphological and Syntactic Analysis of Hebrew Texts</h3>
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+       {% for field in form %}
+        {{ field }}<br>
+    {% endfor %}
+    <button class="btn" type="submit">Submit</button>
+  </form>
+{% if query != "" %}
+  {% if pos != "error" %}
+    <h3 style="margin-top:30px;">
+        <strong>Segmented Text: </strong>{{segments}}
+
+    </h3>
+    <div class="analysis">
+      <h4>Please select level of analysis to display:</h4>
+      <h5>In each you can mark <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> for a perfect parse or <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> for an incorrect one.</h5>
+      <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-pos-parser" aria-expanded="false" aria-controls="collapse-pos-parser">Part of Speech Tags</button>
+
+      <div class="card-block">
+        <div class="collapse multi-collapse" id="collapse-pos-parser">
+          <div class="card card-body row">
+            <div class="col-sm-5">{{pos|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+          </div>
+        </div>
+      </div>
+      <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-morph-parser" aria-expanded="false" aria-controls="collapse-morph-parser">Morphological Features</button>
+          <div class="card-block">
+        <div class="collapse multi-collapse" id="collapse-morph-parser">
+          <div class="card card-body row">
+              <div class="col-sm-5">{{morph|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+          </div>
+        </div>
+      </div>
+      <div class="card-block">
+      <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-dep-parser" aria-expanded="false" aria-controls="collapse-dep-parser">Dependency Relations</button>
+        <div class="collapse multi-collapse" id="collapse-dep-parser">
+          <div class="card card-body row">
+              <div class="col-sm-5">{{relations|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+          </div>
+        </div>
+      </div>
+      <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-lattices-parser" aria-expanded="false" aria-controls="collapse-lattices-parser">Lattices</button>
+      <div class="card-block">
+        <div class="collapse multi-collapse" id="collapse-lattices-parser">
+          <div class="card card-body row">
+              <div class="col-sm-5">{{lattices|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+      <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          Your entry is invalid. Please enter one sentence at a time.
+      </div>
+      If your entry is a single sentence in Hebrew (without linebreaks) and you still see this message, please report to us <button onclick="report()">here</button>.
+      <p id="report"></p>
+  {% endif %}
+{% endif %}
+{% endblock %}
+</div>

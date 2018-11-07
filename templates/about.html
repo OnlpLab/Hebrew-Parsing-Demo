@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}About YAP{% endblock %}
+{% load static%}
+{% block content %}
+
+<h3 class="page-title">About</h3>
+<section style="width: 70%;">
+    <p>
+    Computational models for the automatic analysis of natural language texts which were originally developed for parsing
+        Europen languages are not well suited  for the analysis of languages that exhibit strong interaction between
+        morphology and syntax -- also called Mophologically Rich Language (MRL). These languages, including Hebrew, Arabic
+        and other Semitic languages pose a specific challenge to the standard language processing pipeline.
+        <br>
+        We at the ONLP lab aim to develop computational models that can successfully cope with parsing MRLs.
+    </p>
+    <h3>The Challenge</h3>
+    <p>
+        The challenge, in a nutshell, is as follows: In order to syntactically analyze MRL texts, we first have to break the
+        input tokens down to their constituent morphemes. For instance, the word אהבתיה needs to be broken down into
+        אני + אהבתי + את + היא in order to find out its predicate argument structure, or
+        as commonly termed: "who did what to whom". However, due to extreme morphological ambiguity,  global context is
+        required in order to correctly decompose raw tokens into morphemes. For instance, the token הקפה will receive a
+        different analyses in different contexts:
+        <ol>
+            <li>השלמנו הקפה מלאה של המסלול</li>
+            <li>הקפה היה מאוד מאוד מאוד חם</li>
+        </ol>
+    </p>
+
+    <p>
+    In the first clause הקפה is a single word, and in the second it corresponds to two distinct segments ה + קפה.
+    <br>
+    So, global syntactic analysis requires, but at the same time is required for, accurate morpholgical analysis.
+    <br>
+    How can we solve this apparent loop?
+    </p>
+    <h3>The Solution</h3>
+    <p>
+        To overcome this challenge, we at the ONLP lab develop joint morphosyntactic models that exploit morphological-syntactic
+        interaction in order to allow for accurate morphological as well as syntactic parsing of raw Hebrew texts. On our parser
+        page we present yap, yet another parser, written in Go, by Amir More's in his MSc thesis. The yap parser has been
+        implemented to test the joint morphosyntactic parsing hypothesis in a transition-based framework.
+    </p>
+    <p>Yap currently presents the state of the art on both morphological and syntactic analysis of Modern Hebrew texts.
+        It is trained on an updated version of the SPMRL 2013 Hebrew treebank, which contains about 6K annotated sentences
+        from the Hebrew nespaper Haaretz. Yap is under active development and documentation.  The project page can be found
+        <a href="https://github.com/habeanf/yap" target="_blank">here</a>.  </p>
+    <p>If you have any questions or comments, do not hesitate to <a href="mailto:reutts@openu.ac.il" target="_blank">get in touch</a>. </p>
+    <p>
+        If you make use of this parser or software for research, we would appreciate the following citation:
+    </p>
+        <h3>Citation</h3>
+    <p>
+    @InProceedings{moretsarfatycoling2016,<br>
+    author = {Amir More and Reut Tsarfaty},<br>
+    title = {Data-Driven Morphological Analysis and Disambiguation for Morphologically Rich Languages and Universal Dependencies},<br>
+    booktitle = {Proceedings of COLING 2016},<br>
+    year = {2016},<br>
+    month = {december},<br>
+    location = {Osaka}<br>
+    }
+    </p>
+</section>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}conll-U reader{% endblock %}
+{% load static%}
+{% block content %}
+
+<h3 class="page-title">Raw conll-U file Analysis</h3>
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+       {% for field in form %}
+        {{ field.help_text }}<br>
+        {{ field }}<br>
+    {% endfor %}
+    <button class="btn" type="submit">Submit</button>
+  </form>
+{% if query != "" %}
+<h3 style="margin-top:30px;">
+    <strong>Segmented Text: </strong>{{segments}}
+
+</h3>
+<div class="analysis">
+<div class="row">
+  <h4>Please select level of analysis to display:</h4>
+</div>
+
+<div class="row">
+  <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-pos-parser" aria-expanded="false" aria-controls="collapse-pos-parser">Part of Speech Tags</button>
+  <div class="card-block">
+    <div class="collapse multi-collapse" id="collapse-pos-parser">
+      <div class="card card-body">
+            {{pos|linebreaks}}
+      </div>
+    </div>
+  </div>
+  <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-morph-parser" aria-expanded="false" aria-controls="collapse-morph-parser">Morphological Features</button>
+      <div class="card-block">
+    <div class="collapse multi-collapse" id="collapse-morph-parser">
+      <div class="card card-body">
+            {{morph|linebreaks}}
+      </div>
+    </div>
+  </div>
+  <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-dep-parser" aria-expanded="false" aria-controls="collapse-dep-parser">Dependency Relations</button>
+  <div class="card-block">
+    <div class="collapse multi-collapse" id="collapse-dep-parser">
+      <div class="card card-body">
+            {{relations|linebreaks}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endif %}
+{% endblock %}

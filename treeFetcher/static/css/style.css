@@ -1,0 +1,138 @@
+/*-------------------------------*/
+/*             Main              */
+/*-------------------------------*/
+
+main {
+    margin: 150px;
+}
+
+
+#annotators {
+    width: 600px;
+    height: auto;
+}
+
+.page-title{
+    border-bottom: 1px solid #ccc; /* This is the line replacing the hr*/
+    margin-bottom: 10px; /* This is the space below the line */
+    padding-top: 30px;
+    padding-bottom: 5px; /* This is the space between the heading text and the line */
+    border-color: black;
+	font-size: 32px;
+}
+
+section p {
+    text-align: justify;
+    padding: 20px 100px 0px 20px;
+    size: 16px;
+    line-height: 2;
+}
+
+section h3 {
+    padding: 40px 100px 0px 10px;
+
+}
+
+
+/*-------------------------------*/
+/*             NavBar            */
+/*-------------------------------*/
+
+
+#logo {
+  width: 150px;
+}
+
+.navbar-brand {
+  padding: 3px;
+}
+
+.navbar-inverse {
+    background-color: #000;
+}
+
+.dropdown-menu {
+    filter: invert(100%);
+}
+/*-------------------------------*/
+/*           Annotations         */
+/*-------------------------------*/
+
+.analysis {
+    width: 90%;
+    margin-top: 2.5%;
+}
+
+
+.card {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+
+.card-header{
+    margin: 5px;
+    margin-left: 5px;
+    width: 55%;
+    height: 30px;
+    text-align: left;
+}
+
+.collapse{
+    padding-top: 20px;
+    font-size: 16px;
+}
+
+
+.card-subtype {
+    margin-left: 40px;
+}
+
+.btn{
+    border-color: black;
+    background-color: #ccc
+}
+
+.collapsed{
+    border-color: #9b9b9b;
+}
+
+
+/*-------------------------------*/
+/*             Alerts            */
+/*-------------------------------*/
+
+.alert-danger {
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 50%;
+}
+
+#report {
+    font-size: 18px;
+}
+
+.feedback {
+    font-size: large;
+    padding: 5px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.correct{
+    color: green;
+}
+
+.incorrect{
+    color: red;
+}
+
+.feedback:hover{
+    color:inherit;
+}
+
+.feedback:focus {
+    font-size: xx-large;
+    color: black;
+    outline: 5px auto transparent;
+}

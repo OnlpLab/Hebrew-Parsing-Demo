@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}contact us{% endblock %}
+{% load static%}
+{% block content %}
+
+<h3 class="page-title">Contact Us
+    <a href="mailto:reutts@openu.ac.il" target="_blank">
+        <span id="et-info-email">Language Processing Lab</span>
+    </a></h3>
+<div class="contact_form">
+    <form method="post">
+        {% csrf_token %}
+        {{ contact.as_contact }}
+        <div class="form-actions">
+          <button class="btn" type="submit">Send</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
