@@ -31,12 +31,11 @@ def submit_utterance(request):
                 pos = pos_tagger(lattice)
                 morph = morphological_analyzer(lattice)
                 relations = show_dependencies(conll)
+
             except KeyError:
                 pos = "error"
                 send_bad_input(query)
     return render(request, "index.html", {'form': form, 'pos': pos, 'morph': morph, 'relations': relations, 'segments': segments, 'query': query, 'lattices': lattices})
-
-
 
 
 def send_bad_input(query):

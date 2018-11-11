@@ -117,22 +117,10 @@ section h3 {
     padding: 5px;
     border-color: transparent;
     background-color: transparent;
+    color:black
 }
 
-.correct{
-    color: green;
-}
-
-.incorrect{
-    color: red;
-}
-
-.feedback:hover{
-    color:inherit;
-}
 
 .feedback:focus {
-    font-size: xx-large;
-    color: black;
     outline: 5px auto transparent;
 }

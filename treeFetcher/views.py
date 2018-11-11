@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import UtteranceForm, ConllForm, ContactForm, ReportForm
+from .forms import UtteranceForm, ConllForm, ContactForm
 from .conll_file_fetcher import parse_sentence, morphological_analyzer, show_dependencies, segment_query, pos_tagger
 from .models import DepCategory
 from django.core.mail import send_mail, BadHeaderError

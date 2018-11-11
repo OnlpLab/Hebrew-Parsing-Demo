@@ -6,9 +6,9 @@
 <h3 class="page-title">Morphological and Syntactic Analysis of Hebrew Texts</h3>
   <form method="post">
     {% csrf_token %}
-    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="hidden" name="next" value="{{ next }}"/>
        {% for field in form %}
-        {{ field }}<br>
+      <div id="query">{{ field }}</div><br>
     {% endfor %}
     <button class="btn" type="submit">Submit</button>
   </form>
@@ -26,9 +26,9 @@
       <div class="card-block">
         <div class="collapse multi-collapse" id="collapse-pos-parser">
           <div class="card card-body row">
-            <div class="col-sm-5">{{pos|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+            <div class="col-sm-5", id="pos">{{pos|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'pos')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x', 'pos')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
           </div>
         </div>
       </div>
@@ -36,9 +36,9 @@
           <div class="card-block">
         <div class="collapse multi-collapse" id="collapse-morph-parser">
           <div class="card card-body row">
-              <div class="col-sm-5">{{morph|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+              <div class="col-sm-5" id="morph">{{morph|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'morph')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'morph')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
           </div>
         </div>
       </div>
@@ -46,9 +46,9 @@
       <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-dep-parser" aria-expanded="false" aria-controls="collapse-dep-parser">Dependency Relations</button>
         <div class="collapse multi-collapse" id="collapse-dep-parser">
           <div class="card card-body row">
-              <div class="col-sm-5">{{relations|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+              <div class="col-sm-5", id="relations">{{relations|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'relations')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'relations')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
           </div>
         </div>
       </div>
@@ -56,9 +56,9 @@
       <div class="card-block">
         <div class="collapse multi-collapse" id="collapse-lattices-parser">
           <div class="card card-body row">
-              <div class="col-sm-5">{{lattices|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+              <div class="col-sm-5", id="lattices">{{lattices|linebreaks}}</div>
+            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'lattices')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'lattices')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
           <span class="sr-only">Error:</span>
           Your entry is invalid. Please enter one sentence at a time.
       </div>
-      If your entry is a single sentence in Hebrew (without linebreaks) and you still see this message, please report to us <button onclick="report()">here</button>.
+      If your entry is a single sentence in Hebrew (without linebreaks) and you still see this message, please report to us <button onclick="report(this, 'crash', 'query')">here</button>.
       <p id="report"></p>
   {% endif %}
 {% endif %}

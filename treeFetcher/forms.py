@@ -2,7 +2,7 @@ from django import forms
 
 
 class UtteranceForm(forms.Form):
-    utterance = forms.CharField(label='Utterance', widget=forms.Textarea(attrs={
+    utterance = forms.CharField(max_length=600, label='Utterance', widget=forms.Textarea(attrs={
         'placeholder': 'למשל, גנן גידל דגן בגן',
         'rows': 5,
         'cols': 100}))
@@ -48,17 +48,3 @@ class ContactForm(MyForm):
     contact_email = forms.EmailField(required=True, label="Email")
     subject = forms.CharField(required=True, label='Subject')
     message = forms.CharField(required=True, widget=forms.Textarea, label='Message')
-
-
-class ReportForm(MyForm):
-    contact_name = forms.CharField(required=True, label="Name")
-    contact_email = forms.EmailField(required=True, label="Email")
-    entry = forms.CharField(required=True, widget=forms.Textarea, label='Entry')
-
-    def as_report(self):
-        return self._html_output(
-            normal_row='<p%(html_class_attr)s> %(label)s <br> %(field)s %(help_text)s </p>',
-            error_row='%s',
-            row_ender='</p>',
-            help_text_html=' <span class="helptext">%s</span>',
-            errors_on_separate_row=True)
