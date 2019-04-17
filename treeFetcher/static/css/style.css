@@ -66,14 +66,17 @@ section h3 {
 
 .card {
     margin-top: 5px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
+.col-sm-5 {
+    width: 80%
+}
 
 .card-header{
     margin: 5px;
     margin-left: 5px;
-    width: 55%;
+    width: 95%;
     height: 30px;
     text-align: left;
 }
@@ -85,7 +88,7 @@ section h3 {
 
 
 .card-subtype {
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .btn{
@@ -97,7 +100,11 @@ section h3 {
     border-color: #9b9b9b;
 }
 
+table {
+    border-spacing: 30px 5px;
+    border-collapse: separate;
 
+}
 /*-------------------------------*/
 /*             Alerts            */
 /*-------------------------------*/
@@ -124,3 +131,4 @@ section h3 {
 .feedback:focus {
     outline: 5px auto transparent;
 }
+

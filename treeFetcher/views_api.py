@@ -1,4 +1,4 @@
-from .conll_api_fetcher import parse_sentence, morphological_analyzer, show_dependencies, segment_query, pos_tagger
+from .conll_api_fetcher import parse_sentence, morphological_analyzer, show_dependencies, segment_query, pos_tagger, get_lemmas, parse_lattice
 from django.shortcuts import render, redirect
 from .forms import UtteranceForm
 import time
@@ -16,6 +16,8 @@ def submit_utterance(request):
     relations = ""
     segments = ''
     morph = ''
+    lemmas = ''
+    lattice_table = ''
     if request.method == 'GET':
         form = UtteranceForm
     else:
@@ -26,16 +28,21 @@ def submit_utterance(request):
             try:
                 lattice = parse_data['md_lattice']
                 lattices = parse_data['ma_lattice']
+                lattice_table = parse_lattice(lattices)
                 conll = parse_data['dep_tree']
+                logger.warning(conll)
                 segments = segment_query(conll)
                 pos = pos_tagger(lattice)
                 morph = morphological_analyzer(lattice)
                 relations = show_dependencies(conll)
+                lemmas = get_lemmas(conll)
 
             except KeyError:
                 pos = "error"
                 send_bad_input(query)
-    return render(request, "index.html", {'form': form, 'pos': pos, 'morph': morph, 'relations': relations, 'segments': segments, 'query': query, 'lattices': lattices})
+    return render(request, "index.html", {'form': form, 'pos': pos, 'lemmas': lemmas, 'morph': morph,
+                                          'relations': relations, 'segments': segments, 'query': query,
+                                          'lattices': lattice_table})
 
 
 def send_bad_input(query):

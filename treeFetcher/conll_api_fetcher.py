@@ -58,16 +58,31 @@ def pos_tagger(conll):
     pos = []
     for lemma in lemmas:
         if (lemma[3] != "PUNCT") and ('-' not in lemma[0]):
-            pos.append("%s %s" % (lemma[2], lemma[4]))
-    return "\n".join(pos)
+            pos.append({'token': lemma[2], 'xpos': lemma[4]})
+    return pos
+
+def get_lemmas(conll):
+    lemmas = conll_to_list(conll)
+    lemmas = [{'token': l[1], 'lemma': l[2]} for l in lemmas]
+    return lemmas
+
+def parse_lattice(lattices):
+    lattice_list_of_dicts = []
+    for row in lattices.split('\n'):
+        row = row.split('\t')
+        print(row)
+        if len(row) > 7:
+            lattice_list_of_dicts.append({"from": row[0], "to": row[1], "form": row[2], "lemma": row[3], "postag": row[4],
+                              "features": row[6].replace("|", ","), "token_number": row[7]})
+    return lattice_list_of_dicts
 
 def morphological_analyzer(lattice):
     lemmas = conll_to_list(lattice)
     morph = []
     for lemma in lemmas:
         if (lemma[4] != "PUNCT") and ('-' not in lemma[2]):
-            morph.append("%s\t\t%s\t\t" % (lemma[2], lemma[6].replace("|", "\t\t").replace("_", "\t")))
-    return "\n".join(morph)
+            morph.append({'token': lemma[2], 'feats': lemma[6].replace("|", "\t\t").replace("_", "\t")})
+    return morph
 
 
 def show_dependencies(conll):
@@ -83,9 +98,11 @@ def show_dependencies(conll):
                     head_lemma = subline[1]
             self_lemma = line[1]
             self_index = line[0]
-            dependency = "%s(%s-%s, %s-%s)" %(relation, self_lemma, self_index, head_lemma, head_index)
+            # dependency = "%s(%s-%s, %s-%s)" %(relation, self_lemma, self_index, head_lemma, head_index)
+            dependency = {'relation': relation, 'self_lemma': self_lemma, 'self_index': self_index,
+                          'head_lemma': head_lemma, 'head_index': head_index}
             dependencies.append(dependency)
-    return "\n".join(dependencies)
+    return dependencies
 
 
 if __name__ == "__main__":

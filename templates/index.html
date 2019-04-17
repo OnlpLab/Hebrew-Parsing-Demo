@@ -20,45 +20,144 @@
     </h3>
     <div class="analysis">
       <h4>Please select level of analysis to display:</h4>
-      <h5>In each you can mark <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> for a perfect parse or <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> for an incorrect one.</h5>
+      <!--<h5>In each you can mark <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> for a perfect parse or <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> for an incorrect one.</h5>-->
       <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-pos-parser" aria-expanded="false" aria-controls="collapse-pos-parser">Part of Speech Tags</button>
 
       <div class="card-block">
         <div class="collapse multi-collapse" id="collapse-pos-parser">
+            <!--<button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'pos')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>-->
+            <!--<button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x', 'pos')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>-->
           <div class="card card-body row">
-            <div class="col-sm-5", id="pos">{{pos|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'pos')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x', 'pos')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+            <div class="col-sm-5", id="pos">
+                <table>
+                    <tr>
+                        <th>token</th>
+                        <th>pos tag</th>
+                    </tr>
+                    {% for tag in pos %}
+                    <tr>
+                        <td>{{tag.token}}</td>
+                        <td>{{tag.xpos}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
           </div>
         </div>
       </div>
+    <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-lemma-parser" aria-expanded="false" aria-controls="collapse-lemma-parser">Lemmas</button>
+
+      <div class="card-block">
+        <div class="collapse multi-collapse" id="collapse-lemma-parser">
+            <!--<button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>-->
+            <!--<button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>-->
+
+          <div class="card card-body row">
+            <div class="col-sm-5">
+                <table>
+                    <tr>
+                        <th>token</th>
+                        <th>lemma</th>
+                    </tr>
+                    {% for lemma in lemmas %}
+                    <tr>
+                        <td>{{lemma.token}}</td>
+                        <td>{{lemma.lemma}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+         </div>
+        </div>
+      </div>
+
       <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-morph-parser" aria-expanded="false" aria-controls="collapse-morph-parser">Morphological Features</button>
           <div class="card-block">
         <div class="collapse multi-collapse" id="collapse-morph-parser">
-          <div class="card card-body row">
-              <div class="col-sm-5" id="morph">{{morph|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'morph')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'morph')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+             <!--<button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'morph')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>-->
+            <!--<button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'morph')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>-->
+         <div class="card card-body row">
+              <div class="col-sm-5" id="morph">
+                <table>
+                    <tr>
+                        <th>token</th>
+                        <th>features</th>
+                    </tr>
+                    {% for feature in morph %}
+                    <tr>
+                        <td>{{feature.token}}</td>
+                        <td>{{feature.feats}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+              </div>
           </div>
         </div>
       </div>
       <div class="card-block">
       <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-dep-parser" aria-expanded="false" aria-controls="collapse-dep-parser">Dependency Relations</button>
         <div class="collapse multi-collapse" id="collapse-dep-parser">
+             <!--<button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'relations')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>-->
+            <!--<button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'relations')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>-->
+
           <div class="card card-body row">
-              <div class="col-sm-5", id="relations">{{relations|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'relations')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'relations')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
-          </div>
+              <div class="col-sm-5", id="relations">
+                  <!--{{relations|linebreaks}}-->
+                <table>
+                    <tr>
+                        <th>relation</th>
+                        <th>self lemma</th>
+                        <th>self index</th>
+                        <th>head lemma</th>
+                        <th>head index</th>
+                    </tr>
+                    {% for dep in relations %}
+                    <tr>
+                        <td>{{dep.relation}}</td>
+                        <td>{{dep.self_lemma}}</td>
+                        <td>{{dep.self_index}}</td>
+                        <td>{{dep.head_lemma}}</td>
+                        <td>{{dep.head_index}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+              </div>
+         </div>
         </div>
       </div>
       <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-lattices-parser" aria-expanded="false" aria-controls="collapse-lattices-parser">Lattices</button>
       <div class="card-block">
         <div class="collapse multi-collapse" id="collapse-lattices-parser">
+        <!--<button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'lattices')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>-->
+        <!--<button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'lattices')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>-->
+
           <div class="card card-body row">
-              <div class="col-sm-5", id="lattices">{{lattices|linebreaks}}</div>
-            <button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'lattices')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-            <button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'lattices')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
+              <div class="col-sm-5", id="lattices">
+                  <!--{{lattices|linebreaks}}-->
+                <table>
+                    <tr>
+                        <th>from</th>
+                        <th>to</th>
+                        <th>form</th>
+                        <th>lemma</th>
+                        <th>pos tag</th>
+                        <th>features</th>
+                        <th>token number</th>
+                    </tr>
+                    {% for item in lattices %}
+                    <tr>
+                        <td>{{item.from}}</td>
+                        <td>{{item.to}}</td>
+                        <td>{{item.form}}</td>
+                        <td>{{item.lemma}}</td>
+                        <td>{{item.postag}}</td>
+                        <td>{{item.features}}</td>
+                        <td>{{item.token_number}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+              </div>
           </div>
         </div>
       </div>
