@@ -3,7 +3,7 @@ from django import forms
 
 class UtteranceForm(forms.Form):
     utterance = forms.CharField(max_length=600, label='Utterance', widget=forms.Textarea(attrs={
-        'placeholder': 'גנן גידל דגן בגן',
+        'placeholder': 'למשל, גנן גידל דגן בגן',
         'rows': 5,
         'cols': 100}))
 
