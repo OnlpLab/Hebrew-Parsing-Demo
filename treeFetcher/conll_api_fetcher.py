@@ -98,11 +98,11 @@ def show_dependencies(conll):
                     head_lemma = subline[1]
             self_lemma = line[1]
             self_index = line[0]
-            # dependency = "%s(%s-%s, %s-%s)" %(relation, self_lemma, self_index, head_lemma, head_index)
-            dependency = {'relation': relation, 'self_lemma': self_lemma, 'self_index': self_index,
-                          'head_lemma': head_lemma, 'head_index': head_index}
+            dependency = "%s(%s-%s, %s-%s)" %(relation, self_lemma, self_index, head_lemma, head_index)
+            # dependency = {'relation': relation, 'self_lemma': self_lemma, 'self_index': self_index,
+            #               'head_lemma': head_lemma, 'head_index': head_index}
             dependencies.append(dependency)
-    return dependencies
+    return "\n".join(dependencies)
 
 
 if __name__ == "__main__":

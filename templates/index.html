@@ -103,25 +103,28 @@
 
           <div class="card card-body row">
               <div class="col-sm-5", id="relations">
-                  <!--{{relations|linebreaks}}-->
-                <table>
-                    <tr>
-                        <th>relation</th>
-                        <th>self lemma</th>
-                        <th>self index</th>
-                        <th>head lemma</th>
-                        <th>head index</th>
-                    </tr>
-                    {% for dep in relations %}
-                    <tr>
-                        <td>{{dep.relation}}</td>
-                        <td>{{dep.self_lemma}}</td>
-                        <td>{{dep.self_index}}</td>
-                        <td>{{dep.head_lemma}}</td>
-                        <td>{{dep.head_index}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
+                  {{relations|linebreaks}}
+                  <!--{%for dep in relations%}-->
+                    <!---->
+                  <!--{%endfor%}-->
+                <!--<table>-->
+                    <!--<tr>-->
+                        <!--<th>relation</th>-->
+                        <!--<th>self lemma</th>-->
+                        <!--<th>self index</th>-->
+                        <!--<th>head lemma</th>-->
+                        <!--<th>head index</th>-->
+                    <!--</tr>-->
+                    <!--{% for dep in relations %}-->
+                    <!--<tr>-->
+                        <!--<td>{{dep.relation}}</td>-->
+                        <!--<td>{{dep.self_lemma}}</td>-->
+                        <!--<td>{{dep.self_index}}</td>-->
+                        <!--<td>{{dep.head_lemma}}</td>-->
+                        <!--<td>{{dep.head_index}}</td>-->
+                    <!--</tr>-->
+                    <!--{% endfor %}-->
+                <!--</table>-->
               </div>
          </div>
         </div>
