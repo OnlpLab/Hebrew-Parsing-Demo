@@ -31,8 +31,8 @@
             <div class="col-sm-5", id="pos">
                 <table>
                     <tr>
-                        <th>token</th>
-                        <th>pos tag</th>
+                        <th>Form</th>
+                        <th>Part of Speech</th>
                     </tr>
                     {% for tag in pos %}
                     <tr>
@@ -56,8 +56,8 @@
             <div class="col-sm-5">
                 <table>
                     <tr>
-                        <th>token</th>
-                        <th>lemma</th>
+                        <th>Form</th>
+                        <th>Lemma</th>
                     </tr>
                     {% for lemma in lemmas %}
                     <tr>
@@ -81,8 +81,8 @@
               <div class="col-sm-5" id="morph">
                 <table>
                     <tr>
-                        <th>token</th>
-                        <th>features</th>
+                        <th>Form</th>
+                        <th>Features</th>
                     </tr>
                     {% for feature in morph %}
                     <tr>
@@ -103,28 +103,24 @@
 
           <div class="card card-body row">
               <div class="col-sm-5", id="relations">
-                  {{relations|linebreaks}}
-                  <!--{%for dep in relations%}-->
-                    <!---->
-                  <!--{%endfor%}-->
-                <!--<table>-->
-                    <!--<tr>-->
-                        <!--<th>relation</th>-->
-                        <!--<th>self lemma</th>-->
-                        <!--<th>self index</th>-->
-                        <!--<th>head lemma</th>-->
-                        <!--<th>head index</th>-->
-                    <!--</tr>-->
-                    <!--{% for dep in relations %}-->
-                    <!--<tr>-->
-                        <!--<td>{{dep.relation}}</td>-->
-                        <!--<td>{{dep.self_lemma}}</td>-->
-                        <!--<td>{{dep.self_index}}</td>-->
-                        <!--<td>{{dep.head_lemma}}</td>-->
-                        <!--<td>{{dep.head_index}}</td>-->
-                    <!--</tr>-->
-                    <!--{% endfor %}-->
-                <!--</table>-->
+                  <!--{{relations|linebreaks}}-->
+                <table>
+                    <tr>
+                        <th>Relation</th>
+                        <th>Head</th>
+                        <th>Form</th>
+                    </tr>
+                    {% for dep in relations %}
+                        {% for tree in dep %}
+                            <tr>
+                                <td><i>{{tree.relation}}</i></td>
+                                <td>{{tree.head_index}}-{{tree.head_lemma}}</td>
+                                <td>{{tree.self_index}}-{{tree.self_lemma}}</td>
+                            </tr>
+                        {% endfor %}
+                        <td>&nbsp</td>
+                    {% endfor %}
+                </table>
               </div>
          </div>
         </div>
@@ -140,13 +136,13 @@
                   <!--{{lattices|linebreaks}}-->
                 <table>
                     <tr>
-                        <th>from</th>
-                        <th>to</th>
-                        <th>form</th>
-                        <th>lemma</th>
-                        <th>pos tag</th>
-                        <th>features</th>
-                        <th>token number</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Form</th>
+                        <th>Lemma</th>
+                        <th>Part of Speech</th>
+                        <th>Features</th>
+                        <th>Token Number</th>
                     </tr>
                     {% for item in lattices %}
                     <tr>

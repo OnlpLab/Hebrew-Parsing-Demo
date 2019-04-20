@@ -23,6 +23,7 @@ def space_punctuation(utterance):
 
     u = re.sub(r'([^\\])([\"])', r'\1\\\2', u)
     u = re.sub(r' +', ' ', u)
+    u = u.replace('. ', '.  ')
     return u
 
 
@@ -70,7 +71,6 @@ def parse_lattice(lattices):
     lattice_list_of_dicts = []
     for row in lattices.split('\n'):
         row = row.split('\t')
-        print(row)
         if len(row) > 7:
             lattice_list_of_dicts.append({"from": row[0], "to": row[1], "form": row[2], "lemma": row[3], "postag": row[4],
                               "features": row[6].replace("|", ","), "token_number": row[7]})
@@ -87,23 +87,36 @@ def morphological_analyzer(lattice):
 
 def show_dependencies(conll):
     lemmas = conll_to_list(conll)
-    dependencies = []
-    for line in lemmas:
-        if (line[3] != "PUNCT") and ('-' not in line[0]):
-            relation = line[7]
-            head_index = line[6]
-            head_lemma = "root"
-            for subline in lemmas:
-                if subline[0] == head_index:
-                    head_lemma = subline[1]
-            self_lemma = line[1]
-            self_index = line[0]
-            dependency = "%s(%s-%s, %s-%s)" %(relation, self_lemma, self_index, head_lemma, head_index)
-            # dependency = {'relation': relation, 'self_lemma': self_lemma, 'self_index': self_index,
-            #               'head_lemma': head_lemma, 'head_index': head_index}
-            dependencies.append(dependency)
-    return "\n".join(dependencies)
-
+    start_indices = [x for x in range(len(lemmas)) if lemmas[x][0] == '1']
+    sentences = []
+    for x in range(len(start_indices)-1):
+        sentences.append(lemmas[start_indices[x]:start_indices[x+1]])
+    last_sentence = lemmas[start_indices[-1]:]
+    sentences.append(last_sentence)
+    trees = []
+    for sent in sentences:
+        dependencies = []
+        for y in range(len(sent)):
+            if '-' not in sent[y][0]:
+                relation = sent[y][7]
+                head_index = sent[y][6]
+                head_lemma = "root"
+                self_lemma = sent[y][1]
+                self_index = sent[y][0]
+                for x in range(len(sent)):
+                    if sent[x][0] == head_index:
+                        head_lemma = sent[x][1]
+                        break
+                dependency_row = "%s(%s-%s, %s-%s)" %(relation, self_lemma, self_index, head_lemma, head_index)
+                dependency = {'relation': relation, 'self_lemma': self_lemma, 'self_index': self_index,
+                            'head_lemma': head_lemma, 'head_index': head_index, 'dep_row': dependency_row}
+                dependencies.append(dependency)
+        trees.append(dependencies)
+        # tree = "\n".join(dependencies)
+        # tree += "\n"
+        # trees.append(tree)
+    # return "\n".join(trees)
+    return trees
 
 if __name__ == "__main__":
     utterance = "שלום ,  שנה טובה לכולם"
