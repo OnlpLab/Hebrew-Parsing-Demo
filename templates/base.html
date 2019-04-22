@@ -14,19 +14,12 @@
     <body>
     <header>
       <nav class="navbar navbar-inverse navbar-fixed-top">
-          <a class="navbar-brand" href="{% url 'home' %}"><img class="img-responsive" id="logo" src="static/images/opu_logo.jpg"></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><img class="img-responsive" id="logo" src="static/images/onlp_logo.png"></a>
           <ul class="nav navbar-nav">
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'home' %}">Parser</a></li>
-            <li><a href="{% url 'conll-reader' %}">conll-U reader</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Documentation
-                <ul class="dropdown-menu">
-                    <li><a href="{% url 'UD-relations' %}">Hebrew UD relations</a></li>
-                </ul>
-              </a>
-            </li>
+            <li><a href="{% url 'conll-reader' %}">conll-U Reader</a></li>
+            <li><a href="{% url 'UD-relations' %}">Documentation</a></li>
             <li><a href="{% url 'contact' %}">Contact Us</a></li>
           </ul>
       </nav>
