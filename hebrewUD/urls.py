@@ -25,7 +25,7 @@ urlpatterns = [
     #path('', views.submit_utterance, name="home"),
     path('', views_api.submit_utterance, name="home"),
     path('conll-reader', views.submit_conll, name="conll-reader"),
-    path('relations', views.relations, name="UD-relations"),
+    path('documentation', views.relations, name="documentation"),
     path('admin/', admin.site.urls),
     path('contact', views.contact, name="contact"),
     path('about', views.about, name="about"),

@@ -6,6 +6,35 @@ main {
     margin: 150px;
 }
 
+body {
+    line-height: 2;
+}
+
+pre code {
+  background-color: #e6f2ff;
+  display: block;
+  padding: -5px;
+  line-height: 1.5;
+}
+
+pre {
+border: 0; background-color: transparent;
+}
+
+.dl-horizontal dt, .dl-horizontal dd {
+    text-align: left;
+    line-height: 2;
+    padding-left: 2%;
+}
+
+h5 {
+    font-weight: 800;
+    font-size: medium;
+}
+
+h2, h3, h4, h5 {
+margin-top: 3%;
+}
 
 #annotators {
     width: 600px;
@@ -26,6 +55,12 @@ section p {
     padding: 20px 100px 0px 20px;
     size: 16px;
     line-height: 2;
+}
+
+section {
+    width: 85%;
+    font-size: medium;
+    text-align: justify;
 }
 
 section h3 {

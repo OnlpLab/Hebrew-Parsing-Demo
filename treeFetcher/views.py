@@ -62,7 +62,7 @@ def submit_conll(request):
 
 def relations(request):
     relations = DepCategory.objects.all()
-    return render(request, "relations.html", {'relations': relations})
+    return render(request, "documentation.html", {'relations': relations})
 
 def contact(request):
     sent = False
