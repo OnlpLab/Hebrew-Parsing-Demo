@@ -104,18 +104,21 @@
           <div class="card card-body row">
               <div class="col-sm-5", id="relations">
                   <!--{{relations|linebreaks}}-->
-                <table>
+                <table style="border-spacing: 10px 5px;">
                     <tr>
                         <th>Relation</th>
                         <th>Head</th>
+                        <th></th>
                         <th>Dependent</th>
                     </tr>
                     {% for dep in relations %}
                         {% for tree in dep %}
                             <tr>
                                 <td><i>{{tree.relation}}</i></td>
-                                <td>{{tree.head_index}}-{{tree.head_lemma}}</td>
-                                <td>{{tree.self_index}}-{{tree.self_lemma}}</td>
+                                <td>( {{tree.head_index}} - {{tree.head_lemma}}</td>
+                                <td>,</td>
+                                <td>{{tree.self_index}} - {{tree.self_lemma}} )</td>
+
                             </tr>
                         {% endfor %}
                         <td>&nbsp</td>
