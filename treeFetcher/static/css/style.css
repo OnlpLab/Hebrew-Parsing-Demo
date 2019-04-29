@@ -8,6 +8,7 @@ main {
 
 body {
     line-height: 2;
+    font-family: 'Roboto', sans-serif;
 }
 
 pre code {
@@ -32,8 +33,10 @@ h5 {
     font-size: medium;
 }
 
-h2, h3, h4, h5 {
+h1, h2, h3, h4, h5 {
 margin-top: 3%;
+font-family: 'Raleway', sans-serif;
+font-weight: 700;
 }
 
 #annotators {
@@ -48,6 +51,8 @@ margin-top: 3%;
     padding-bottom: 5px; /* This is the space between the heading text and the line */
     border-color: black;
 	font-size: 32px;
+    font-family: 'Fira Sans', sans-serif;
+    text-transform: uppercase;
 }
 
 section p {
@@ -82,8 +87,12 @@ section h3 {
 
 
 .navbar-inverse {
-    background-color: #000;
+    background-color: rgba(64, 65, 97, 0.9);
+        border-top: 0;
 }
+
+
+
 
 .dropdown-menu {
     filter: invert(100%);
@@ -100,7 +109,10 @@ section h3 {
 .navbar-inverse .navbar-nav>li>a{
     color: white;
     font-weight: 900;
+    text-transform: uppercase;
 }
+
+
 /*-------------------------------*/
 /*           Annotations         */
 /*-------------------------------*/

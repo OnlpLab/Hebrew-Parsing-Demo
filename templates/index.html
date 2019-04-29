@@ -3,8 +3,9 @@
 {% load staticfiles %}
 {% block content %}
 
-<h3 class="page-title">Morphological and Syntactic Analysis of Hebrew Texts</h3>
-  <form method="post">
+<h3 class="page-title">Hebrew Parser</h3>
+<h4>Morphological and Syntactic Analysis of Hebrew Texts</h4>
+      <form method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}"/>
        {% for field in form %}

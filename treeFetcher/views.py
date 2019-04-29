@@ -13,6 +13,26 @@ import time
 def home(request):
     return render(request, 'index.html')
 
+def landing_page(request):
+    sent = False
+    if request.method == 'GET':
+        contact = ContactForm()
+    else:
+        contact = ContactForm(request.POST)
+        if contact.is_valid():
+            subject = contact.cleaned_data.get('subject')
+            from_email = contact.cleaned_data.get('contact_email')
+            message = contact.cleaned_data.get('message')
+            name = contact.cleaned_data.get('contact_name')
+            everything = "Name: %s\n\nSubject: %s\n\nEmail: %s \n\nMessage: %s \n\n"%(str(name), str(subject), str(from_email), str(message))
+            try:
+                send_mail(subject, everything, from_email, ['reutts@openu.ac.il'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            sent = True
+            return redirect('contact')
+    return render(request, "home.html", {'contact': contact, 'sent': sent})
+
 def about(request):
     return render(request, 'about.html')
 
@@ -83,6 +103,7 @@ def contact(request):
             sent = True
             return redirect('contact')
     return render(request, "contact.html", {'contact': contact, 'sent': sent})
+
 
 
 def handler404(request):
