@@ -8,13 +8,43 @@
         <span id="et-info-email">ONLP Language Processing Lab</span>
     </a></h3>
 <div class="contact_form">
-    <form method="post">
-        {% csrf_token %}
-        {{ contact.as_contact }}
-        <div class="form-actions">
-          <button class="btn" type="submit">Send</button>
-        </div>
-    </form>
+                <div class="contact-form">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for c in contact %}
+                            {% if c.label == "Name" or c.label == "Email"  %}
+                                <div class="col-md-6">
+                            {% else %}
+                                <div class="col-md-12">
+                            {% endif %}
+                    <div >{{c.label}}{{ c }}</div>
+                        {% for error in c.errors %}
+                            <div style="color: red;">
+                                {{ error|escape }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <div class="form-actions">
+                      <button class="btn" type="submit">SEND</button>
+                    </div>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </form>
+    <!--<form method="post">-->
+        <!--{% csrf_token %}-->
+        <!--{% for c in contact %}-->
+        <!--<div class="container">{{ c }}</div>-->
+        <!--{% endfor %}-->
+        <!--<div class="form-actions">-->
+          <!--<button class="btn" type="submit">Send</button>-->
+        <!--</div>-->
+    <!--</form>-->
 </div>
 
 {% endblock %}

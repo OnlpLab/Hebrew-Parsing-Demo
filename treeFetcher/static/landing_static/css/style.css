@@ -652,6 +652,7 @@ contact
   background-color: rgb(73, 84, 105);
 }
 
+
 .btn-submit, .btn-submit:hover, .btn-submit:focus {
   background-color: transparent;
   border-radius: 60px;
@@ -660,6 +661,8 @@ contact
   border: 1px solid #be9e21;
   font-size: 14px;
   padding: 6px 20px;
+  margin-left: 15px;
+
 }
 
 .form-control {
@@ -677,6 +680,10 @@ contact
 }
 
 .contact-form input.form-control {
+  color: #fff;
+}
+
+.input-transparent {
   color: #fff;
 }
 
@@ -720,6 +727,17 @@ contact
   color: #be9e21;
 }
 
+
+#id_contact_email {
+    padding-right: 15px !important;
+}
+
+.success {
+    color: #be9e21;
+    margin-top: 15px;
+    font-size: 130%;
+    font-weight: 600;
+}
 /***********************************
 ************************************
 contact

@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import validate_email
 
 
 class UtteranceForm(forms.Form):
@@ -37,14 +38,31 @@ class ConllForm(forms.Form):
 class MyForm(forms.Form):
   def as_contact(self):
     return self._html_output(
-        normal_row='<p%(html_class_attr)s> %(label)s <br> %(field)s %(help_text)s </p>',
+        normal_row='<p%(html_class_attr)s>  %(field)s %(help_text)s </p>',
         error_row='%s',
         row_ender='</p>',
         help_text_html=' <span class="helptext">%s</span>',
         errors_on_separate_row=True)
 
 class ContactForm(MyForm):
-    contact_name = forms.CharField(required=True, label="Name")
-    contact_email = forms.EmailField(required=True, label="Email")
-    subject = forms.CharField(required=True, label='Subject')
-    message = forms.CharField(required=True, widget=forms.Textarea, label='Message')
+    contact_name = forms.CharField(label="Name", min_length=4, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Your Name'
+    }))
+    # contact_name = forms.CharField(required=True, label="Name", placeholder="Your Name")
+    contact_email = forms.EmailField(required=True, label="Email", widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Your Email'
+    }),
+                                     error_messages={'required': 'Please provide your email address.',
+                                                     'invalid': "Please enter a valid email"},
+                                     )
+    subject = forms.CharField(required=True, label='Subject', min_length=8, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Subject'
+    }))
+    message = forms.CharField(required=True, label='Message', widget=forms.Textarea(attrs={
+        'class': 'form-control',
+        'placeholder': 'Message',
+        'rows':5
+    }))

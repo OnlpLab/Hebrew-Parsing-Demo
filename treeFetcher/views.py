@@ -5,6 +5,7 @@ from .conll_file_fetcher import parse_sentence, morphological_analyzer, show_dep
 from .models import DepCategory
 from django.core.mail import send_mail, BadHeaderError
 from django.template import RequestContext
+from django.contrib import messages
 import subprocess
 # Create your views here.
 import time
@@ -26,11 +27,12 @@ def landing_page(request):
             name = contact.cleaned_data.get('contact_name')
             everything = "Name: %s\n\nSubject: %s\n\nEmail: %s \n\nMessage: %s \n\n"%(str(name), str(subject), str(from_email), str(message))
             try:
-                send_mail(subject, everything, from_email, ['reutts@openu.ac.il'])
+                send_mail(subject, everything, from_email, ['onlp.openu@gmail.com', 'reutts@openu.ac.il'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             sent = True
-            return redirect('contact')
+            messages.success(request, 'Your message was successfully sent. Thank you!')
+            return redirect('/home#contact')
     return render(request, "home.html", {'contact': contact, 'sent': sent})
 
 def about(request):
@@ -97,7 +99,7 @@ def contact(request):
             name = contact.cleaned_data.get('contact_name')
             everything = "Name: %s\n\nSubject: %s\n\nEmail: %s \n\nMessage: %s \n\n"%(str(name), str(subject), str(from_email), str(message))
             try:
-                send_mail(subject, everything, from_email, ['onlp.openu@gmail.com'])
+                send_mail(subject, everything, from_email, ['onlp.openu@gmail.com', 'reutts@openu.ac.il'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             sent = True
