@@ -442,30 +442,5 @@ YAP is no longer under development. It is currently supported as part of the ONL
 
     The Apache license does not apply to the BGU Lexicon. Please contact Reut Tsarfaty regarding licensing of the lexicon.
 </section>
-    <!--<div id="accordion" role="tablist" aria-multiselectable="true">-->
-      <!--{% for relation in relations %}-->
-        <!--{% if relation.is_language_specific == False %}-->
-          <!--<div class="card">-->
-        <!--{% else %}-->
-          <!--<div class="card-subtype">-->
-        <!--{% endif %}-->
-            <!--<div class="card-header" role="tab" id="heading{{relation.id}}">-->
-                <!--<h5>-->
-                <!--<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{relation.id}}" aria-expanded="true"-->
-                   <!--aria-controls="collapse{{relation.id}}">-->
-                  <!--<span class="collapsed">{{ relation.title}}</span>-->
-                <!--</a>-->
-              <!--</h5>-->
-            <!--</div>-->
-            <!--<div id="collapse{{relation.id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{relation.id}}">-->
-              <!--<div class="card-block">-->
-                <!--{{ relation.description|linebreaks }}-->
-                <!--{{ relation.example_sentence|linebreaks }}-->
-                <!--{{ relation.example|safe|linebreaks }}-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!---->
-      <!--{% endfor %}-->
     </div>
 {% endblock %}
