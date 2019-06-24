@@ -82,9 +82,14 @@ def submit_conll(request):
             relations = show_dependencies(query.rstrip("\n"))
     return render(request, "conll-reader.html", {'form': form, 'pos': pos, 'relations': relations, 'segments': segments, 'query': query, 'morph': morph})
 
-def relations(request):
+def documentation(request):
     # relations = DepCategory.objects.all()
-    return render(request, "documentation.html") # , {'relations': relations})
+    return render(request, "documentation.html")
+
+def faq(request):
+    # relations = DepCategory.objects.all()
+    return render(request, "faq.html")
+
 
 def contact(request):
     sent = False

@@ -218,3 +218,10 @@ table {
   padding: 6px 20px;
   margin-left: 15px;
 }
+
+
+.faq-answer {
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-right: 40px;
+}
