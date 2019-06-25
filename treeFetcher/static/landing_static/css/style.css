@@ -393,6 +393,7 @@ ul.service-list li i {
   opacity: 0.6;
   color: inherit;
   padding: 10px 0px;
+  text-align: justify;
 }
 
 .service-item a {
@@ -593,6 +594,7 @@ Blog
 
 .blog-info p, .blog-comment p {
   color: #949494;
+  text-align: justify;
 }
 
 .blog-comment p:first-child {
