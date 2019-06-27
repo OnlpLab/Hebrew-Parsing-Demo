@@ -1,4 +1,5 @@
 from .conll_api_fetcher import parse_sentence, morphological_analyzer, show_dependencies, segment_query, pos_tagger, get_lemmas, parse_lattice
+from .spmrl_to_ud import Convert_SPMRL_to_UD, basic_features, basic_pos, entire_line_pos_conversion
 from django.shortcuts import render, redirect
 from .forms import UtteranceForm
 import time
@@ -18,6 +19,8 @@ def submit_utterance(request):
     morph = ''
     lemmas = ''
     lattice_table = ''
+    converted = ''
+
     if request.method == 'GET':
         form = UtteranceForm
     else:
@@ -30,19 +33,26 @@ def submit_utterance(request):
                 lattices = parse_data['ma_lattice']
                 lattice_table = parse_lattice(lattices)
                 conll = parse_data['dep_tree']
-                logger.warning(conll)
+                print(conll)
+                converted_conll = Convert_SPMRL_to_UD(conll)
+                # print(converted_conll.df)
+                converted_conll.apply_conversions(feats=basic_features, simple_pos=basic_pos,
+                                                  complex_pos_conversions=entire_line_pos_conversion)
+                converted = converted_conll.segmented_sentence
                 segments = segment_query(conll)
-                pos = pos_tagger(lattice)
-                morph = morphological_analyzer(lattice)
+                pos = pos_tagger(conll)
                 relations = show_dependencies(conll)
                 lemmas = get_lemmas(conll)
-
+                converted = converted[['FORM', 'LEMMA', 'UPOS', 'FEATS']].to_dict(orient='index')
+                converted = [v for v in converted.values()]
             except KeyError:
                 pos = "error"
                 send_bad_input(query)
     return render(request, "index.html", {'form': form, 'pos': pos, 'lemmas': lemmas, 'morph': morph,
                                           'relations': relations, 'segments': segments, 'query': query,
-                                          'lattices': lattice_table})
+                                          'lattices': lattice_table,
+                                          'converted': converted
+                                          })
 
 
 def send_bad_input(query):
@@ -58,3 +68,4 @@ def send_wrong_parse():
 
 def send_correct_parse():
     pass
+
