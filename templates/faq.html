@@ -7,9 +7,26 @@
 <section>
 
 <h4>How do I extend the lexicon to include out-of-vocabulary  (OOV) words that are relevant to my domain?</h4>
-    <p class="faq-answer">TBD</p>
-
-
+    <p class="faq-answer">A key bottleneck for the system is when parsing  domains it has not been trained on, is the coverage of the lexicon.
+        We rely on a general-purpose  open lexicon containing over 500K entries. OOV words in the input are treated via heuristics we design, and  these heuristics are suitable to a general domain.
+        <br>
+        However, identifying accurately  vocabulary items may be critical when applying the parser to new domains with domain-specific information. Fortunately, we can extend the system with a domain-specific lexicon, thus affecting the MA function and, due to joint inference, increasing accuracy.
+        <br>
+        To see whether it is a lexical mistake or not, the availability of the sentence lattice output (produced by the MA step of YAP) is of great value. By going over the lattice output it is possible to see whether or not the lexicon contains the correct morphological analyses. It is easy to fix missing analyses by editing the lexicon file (located at <em>data/bgulex/bgulex.utf8.hr</em> and adding the correct morphological analysis for that token.
+        <br>
+        Each line in the lexicon file contains a token followed by a list of one or more possible morphological analyses.
+        <br>
+        An analysis is a tuple made of 3 parts &lt;prefix:host:suffix&gt; followed by the host lemma.
+        <br>
+        Each tuple member contains the part of speech tag and morphological features, and can possibly be empty.  E.g
+        <br>
+        <em>אאבד :VB-MF-S-1-FUTURE-NIFAL: נאבד :VB-MF-S-1-FUTURE-PIEL: איבד</em>
+        <br>
+        An example use case could arise when processing medical domain texts related to cancer in which the word  <em>לימפה(lymph)</em> appears in the text but is missing from the lexicon. In this case update the lexicon by adding the following line:
+        <br>
+        <em>לימפה :NN-F-1: לימפה</em>
+        <br>
+        After updating the lexicon you need to restart YAP (if running as a restful server) for the lexical changes to apply.</p>
 </section>
 
 {% endblock %}
