@@ -33,7 +33,6 @@ def submit_utterance(request):
                 lattices = parse_data['ma_lattice']
                 lattice_table = parse_lattice(lattices)
                 conll = parse_data['dep_tree']
-                print(conll)
                 converted_conll = Convert_SPMRL_to_UD(conll)
                 # print(converted_conll.df)
                 converted_conll.apply_conversions(feats=basic_features, simple_pos=basic_pos,

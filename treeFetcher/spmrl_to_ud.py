@@ -58,6 +58,7 @@ class Convert_SPMRL_to_UD():
         return df
 
     def segment_df(self):
+        print(self.df)
         output_df = pd.DataFrame(
             columns=['ID', 'FORM', 'LEMMA', 'UPOS', 'XPOS', 'FEATS', 'HEAD', 'DEPREL', 'DEPS', 'MISC',
                      ])
@@ -85,6 +86,20 @@ class Convert_SPMRL_to_UD():
                      'HEAD': int(row['ID']) + 2, 'DEPREL': row['DEPREL'], 'DEPS': row['DEPS'],
                      'MISC': row['MISC']}, ignore_index=True)
 
+            elif row['XPOS'] == 'S_PRN':
+                prev_feats = output_df.loc[i - 1]['FEATS'] + '|'
+                if prev_feats == '_|':
+                    prev_feats = ''
+                output_df = output_df.append(
+                {'ID': row['ID'], 'FORM': '_' + row['LEMMA'], 'LEMMA': row['LEMMA'], 'UPOS': 'PRON',
+                 'XPOS': 'PRON', 'FEATS': prev_feats + 'PronType=Prs', 'HEAD': row['HEAD'],
+                 'DEPREL': row['DEPREL'], 'DEPS': row['DEPS'], 'MISC': row['MISC']}, ignore_index=True)
+
+
+                output_df.at[i - 1, 'XPOS'] = 'ADP'
+                output_df.at[i - 1, 'FORM'] += '_'
+                # output_df.at[i - 1, 'FEATS'] = 'Case=Gen' # needs recheck - S_PRN seems mostly dative
+
             elif row['XPOS'] == 'DTT' or row['XPOS'] == 'DT':
                 if 'suf_' in row['FEATS']:
                     output_df = output_df.append(
@@ -98,15 +113,19 @@ class Convert_SPMRL_to_UD():
                          'FEATS': "Case=Gen|" + clean_suffix_feats + "|PronType=Prs" + '|xx_UD_REL=nmod:poss',
                          'HEAD': int(row['ID']) + 1, 'DEPREL': row['DEPREL'], 'DEPS': row['DEPS'],
                          'MISC': row['MISC']}, ignore_index=True)
+
                 else:
                     output_df = output_df.append(row, ignore_index=True)
             else:
                 output_df = output_df.append(row, ignore_index=True)
+        print(output_df)
         return output_df
 
     def apply_conversions(self, feats=None, simple_pos=None, complex_pos_conversions=None):
 
         def change_previous_row(row):
+            """this method doesn't work yet. reise when the
+            rest of the segmentation is fixed"""
             feats = row['FEATS']
             xpos = row['XPOS']
             upos = xpos
@@ -115,15 +134,17 @@ class Convert_SPMRL_to_UD():
                 try:
                     prev_feats = self.df.at[prev, 'FEATS']
                 except:
-                    print(prev, row)
+                    print(prev)
                 if xpos == 'S_PRN':
-                    self.df.at[prev, 'XPOS'] = 'ADP'
-                    self.df.at[prev, 'FEATS'] = 'Case=Gen'
+                    print("I am after xpos", prev)
+                    self.segmented_sentence.at[prev, 'XPOS'] = 'ADP'
+                    self.segmented_sentence.at[prev, 'FEATS'] = 'Case=Gen'
+                    print(self.segmented_sentence.at[prev, 'FEATS'])
                     upos = 'PRON'
-                    feats = prev_feats + '|PronType=Prs'
+                    feats += '|PronType=Prs'
             return pd.Series([upos, feats])
 
-        self.segmented_sentence[['UPOS', 'FEATS']] = self.segmented_sentence.apply(change_previous_row, axis=1)
+        # self.segmented_sentence[['UPOS', 'FEATS']] = self.segmented_sentence.apply(change_previous_row, axis=1)
 
         def simple_features_conversion(column, conversions):
             for old, new in conversions.items():

@@ -55,18 +55,12 @@ def segment_query(conll):
             pos.append(lemma[1])
     return "  ".join(pos)
 
-def pos_tagger(conll, converted=None):
-    if type(conll) == 'pandas.core.frame.DataFrame':
-        pos = []
-        for i, row in converted.iterrows():
-            pos.append({'token': row['FORM'], 'xpos': row['UPOS']})
-    else:
-        print(type(converted))
-        lemmas = conll_to_list(conll)
-        pos = []
-        for lemma in lemmas:
-            if (lemma[3] != "PUNCT") and ('-' not in lemma[0]):
-                pos.append({'token': lemma[2], 'xpos': lemma[3]})
+def pos_tagger(conll):
+    lemmas = conll_to_list(conll)
+    pos = []
+    for lemma in lemmas:
+        if (lemma[3] != "PUNCT") and ('-' not in lemma[0]):
+            pos.append({'token': lemma[2], 'xpos': lemma[3]})
     return pos
 
 def get_lemmas(conll):
@@ -129,4 +123,4 @@ def show_dependencies(conll):
 if __name__ == "__main__":
     utterance = "שלום,  שנה טובה לכולם"
     parsed = parse_sentence(utterance)
-    print(parsed)
+    # print(utterance)
