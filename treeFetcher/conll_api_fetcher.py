@@ -1,6 +1,7 @@
 import requests
 import json
 import re
+import pandas as pd
 
 # curl -s -X GET -H 'Content-Type: application/json' -d'{"text": "גנן גידל דגן בגן  "}' localhost:8000/yap/heb/pipeline | jq -r '.dep_tree' | sed -e 's/\\t/\t/g' -e 's/\\n/\n/g'
 url = "http://onlp.openu.org.il:8000/yap/heb/joint"
@@ -59,7 +60,7 @@ def pos_tagger(conll):
     pos = []
     for lemma in lemmas:
         if (lemma[3] != "PUNCT") and ('-' not in lemma[0]):
-            pos.append({'token': lemma[2], 'xpos': lemma[4]})
+            pos.append({'token': lemma[2], 'xpos': lemma[3]})
     return pos
 
 def get_lemmas(conll):
@@ -76,12 +77,12 @@ def parse_lattice(lattices):
                               "features": row[6].replace("|", ","), "token_number": row[7]})
     return lattice_list_of_dicts
 
-def morphological_analyzer(lattice):
-    lemmas = conll_to_list(lattice)
+def morphological_analyzer(conll):
+    lemmas = conll_to_list(conll)
     morph = []
     for lemma in lemmas:
         if (lemma[4] != "PUNCT") and ('-' not in lemma[2]):
-            morph.append({'token': lemma[2], 'feats': lemma[6].replace("|", "\t\t").replace("_", "\t")})
+            morph.append({'token': lemma[2], 'feats': lemma[5].replace("|", "\t\t").replace("_", "\t")})
     return morph
 
 
@@ -118,7 +119,8 @@ def show_dependencies(conll):
     # return "\n".join(trees)
     return trees
 
+
 if __name__ == "__main__":
-    utterance = "שלום ,  שנה טובה לכולם"
+    utterance = "שלום,  שנה טובה לכולם"
     parsed = parse_sentence(utterance)
-    print(parsed)
+    # print(utterance)

@@ -112,7 +112,7 @@ margin-top: 30px;
 
 
 #logo {
-  width: 110px  ;
+  width: 110px;
   filter: invert(100%);
   margin-top: -17%;
 }
@@ -122,6 +122,7 @@ margin-top: 30px;
     background-color: rgba(64, 65, 97, 0.9);
         border-top: 0;
 }
+
 
 .logo-dec {
   color: #be9e21;
@@ -133,8 +134,14 @@ margin-top: 30px;
   font-weight: 700;
   padding-top: 2%;
   text-transform: uppercase;
-
 }
+
+.nav-icons{
+    position: absolute;
+    left: 45%;
+    margin:auto;
+}
+
 
 .dropdown-menu {
     filter: invert(100%);
