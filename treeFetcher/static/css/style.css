@@ -11,6 +11,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
 pre code {
   background-color: #e6f2ff;
   display: block;
@@ -55,19 +56,51 @@ font-weight: 700;
     text-transform: uppercase;
 }
 
-section {
-    text-align: justify;
-    padding: 20px 100px 0px 20px;
-    size: 16px;
-    line-height: 2;
+
+
+@media (max-width: 1200px) {
+    main {
+        margin-top: 150px;
+        margin-right: 10px;
+
+    }
+
+    section {
+        width: 90%;
+        text-align: justify;
+        font-size: x-large;
+        line-height: 2;
+    }
+
+    pre {
+        font-size: large;
+    }
+
+    h4 {
+        font-size: x-large;
+    }
+
+    textarea {
+        font-size: x-large;
+        max-width:90%;
+    }
+
+
+    .navbar-inverse .navbar-nav>li>a, .navbar-brand {
+        font-size: x-large;
+    }
 }
 
-section {
-    width: 85%;
-    font-size: medium;
-    text-align: justify;
+@media (min-width: 1200px) {
+    section {
+        width: 85%;
+        font-size: medium;
+        text-align: justify;
+        padding: 20px 100px 0px 20px;
+        size: 16px;
+        line-height: 2;
+    }
 }
-
 
 .img-container {
 margin-top: 30px;
@@ -90,8 +123,18 @@ margin-top: 30px;
         border-top: 0;
 }
 
+.logo-dec {
+  color: #be9e21;
+}
 
+.navbar-inverse .navbar-brand {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  padding-top: 2%;
+  text-transform: uppercase;
 
+}
 
 .dropdown-menu {
     filter: invert(100%);
@@ -99,7 +142,6 @@ margin-top: 30px;
 }
 
 .navbar-nav {
-    font-size: large;
     margin-top: 1%;
     margin-bottom: 1.2%;
     margin-left: 1.3%;
@@ -110,6 +152,7 @@ margin-top: 30px;
     font-weight: 900;
     text-transform: uppercase;
 }
+
 
 
 /*-------------------------------*/
@@ -164,6 +207,8 @@ table {
     border-collapse: separate;
 
 }
+
+
 /*-------------------------------*/
 /*             Alerts            */
 /*-------------------------------*/
