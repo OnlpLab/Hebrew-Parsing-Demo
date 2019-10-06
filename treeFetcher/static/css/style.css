@@ -90,7 +90,11 @@ margin-top: 30px;
         border-top: 0;
 }
 
-
+.nav-icons{
+    position: absolute;
+    left: 45%;
+    margin:auto;
+}
 
 
 .dropdown-menu {

@@ -87,7 +87,10 @@ class Convert_SPMRL_to_UD():
                      'MISC': row['MISC']}, ignore_index=True)
 
             elif row['XPOS'] == 'S_PRN':
-                prev_feats = output_df.loc[i - 1]['FEATS'] + '|'
+                if output_df.loc[i - 1]['FEATS']:
+                    prev_feats = output_df.loc[i - 1]['FEATS'] + '|'
+                else:
+                    prev_feats = output_df.loc[i - 1]['FEATS']
                 if prev_feats == '_|':
                     prev_feats = ''
                 output_df = output_df.append(
@@ -157,6 +160,8 @@ class Convert_SPMRL_to_UD():
                 return conversions[column]
             else:
                 return column
+
+
 
         def pos_convert_entire_line(row, conversions):
             xpos = row['XPOS']

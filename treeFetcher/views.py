@@ -86,6 +86,10 @@ def documentation(request):
     # relations = DepCategory.objects.all()
     return render(request, "documentation.html")
 
+def resources(request):
+    # relations = DepCategory.objects.all()
+    return render(request, "resources.html")
+
 def faq(request):
     # relations = DepCategory.objects.all()
     return render(request, "faq.html")
