@@ -58,7 +58,6 @@ class Convert_SPMRL_to_UD():
         return df
 
     def segment_df(self):
-        print(self.df)
         output_df = pd.DataFrame(
             columns=['ID', 'FORM', 'LEMMA', 'UPOS', 'XPOS', 'FEATS', 'HEAD', 'DEPREL', 'DEPS', 'MISC',
                      ])
@@ -86,21 +85,40 @@ class Convert_SPMRL_to_UD():
                      'HEAD': int(row['ID']) + 2, 'DEPREL': row['DEPREL'], 'DEPS': row['DEPS'],
                      'MISC': row['MISC']}, ignore_index=True)
 
+
+            # #TODO: check why this is here
             elif row['XPOS'] == 'S_PRN':
-                if output_df.loc[i - 1]['FEATS']:
-                    prev_feats = output_df.loc[i - 1]['FEATS'] + '|'
-                else:
-                    prev_feats = output_df.loc[i - 1]['FEATS']
-                if prev_feats == '_|':
-                    prev_feats = ''
+                print(output_df.loc[i-1])
+                if output_df.loc[i-1]['XPOS'] == 'AT':
+                    output_df.at[i - 1, 'FEATS'] = 'Case=Acc'
+                elif output_df.loc[i - 1]['LEMMA'] == 'של':
+                    output_df.at[i - 1, 'FEATS'] = 'Case=Gen'
+                elif output_df.loc[i - 1]['XPOS'] == 'IN':
+                    output_df.at[i - 1, 'FEATS'] = ''
                 output_df = output_df.append(
                 {'ID': row['ID'], 'FORM': '_' + row['LEMMA'], 'LEMMA': row['LEMMA'], 'UPOS': 'PRON',
-                 'XPOS': 'PRON', 'FEATS': prev_feats + 'PronType=Prs', 'HEAD': row['HEAD'],
+                 'XPOS': 'PRON', 'FEATS': row['FEATS'] + '|PronType=Prs', 'HEAD': row['HEAD'],
                  'DEPREL': row['DEPREL'], 'DEPS': row['DEPS'], 'MISC': row['MISC']}, ignore_index=True)
 
 
-                output_df.at[i - 1, 'XPOS'] = 'ADP'
-                output_df.at[i - 1, 'FORM'] += '_'
+                # if output_df.loc[i - 1]['FEATS']:
+                #     print("feats")
+                #     prev_feats = output_df.loc[i - 1]['FEATS'] + '|'
+                # else:
+                #     print(self.df.loc[i-1])
+                #     print(self.df.loc[i])
+                #     print("no feats")
+                #     prev_feats = output_df.loc[i - 1]['FEATS']
+                # if prev_feats == '_|':
+                #     prev_feats = ''
+                # output_df = output_df.append(
+                # {'ID': row['ID'], 'FORM': '_' + row['LEMMA'], 'LEMMA': row['LEMMA'], 'UPOS': 'PRON',
+                #  'XPOS': 'PRON', 'FEATS': prev_feats + 'PronType=Prs', 'HEAD': row['HEAD'],
+                #  'DEPREL': row['DEPREL'], 'DEPS': row['DEPS'], 'MISC': row['MISC']}, ignore_index=True)
+
+
+                # output_df.at[i - 1, 'XPOS'] = 'ADP'
+                # output_df.at[i - 1, 'FORM'] += '_'
                 # output_df.at[i - 1, 'FEATS'] = 'Case=Gen' # needs recheck - S_PRN seems mostly dative
 
             elif row['XPOS'] == 'DTT' or row['XPOS'] == 'DT':
@@ -133,18 +151,26 @@ class Convert_SPMRL_to_UD():
             xpos = row['XPOS']
             upos = xpos
             prev = row.name - 1
-            if prev > 0:
-                try:
-                    prev_feats = self.df.at[prev, 'FEATS']
-                except:
-                    print(prev)
-                if xpos == 'S_PRN':
-                    print("I am after xpos", prev)
-                    self.segmented_sentence.at[prev, 'XPOS'] = 'ADP'
-                    self.segmented_sentence.at[prev, 'FEATS'] = 'Case=Gen'
-                    print(self.segmented_sentence.at[prev, 'FEATS'])
-                    upos = 'PRON'
-                    feats += '|PronType=Prs'
+            if xpos == 'PRON' and feats == 'PronType=Prs':
+                if prev > 0:
+                    if self.df.at[prev, 'XPOS'] == 'ADP':
+                        try:
+                            prev_feats = self.df.at[prev, 'FEATS']
+                            print(prev_feats)
+                        except:
+                            print(prev)
+                        print("I am after xpos", prev)
+                        self.segmented_sentence.at[prev, 'XPOS'] = 'ADP'
+                        self.segmented_sentence.at[prev, 'FEATS'] = 'Case=Gen'
+                        print(self.segmented_sentence.at[prev, 'FEATS'])
+                        upos = 'PRON'
+                        feats += '|PronType=Prs'
+                    else:
+                        print(self.df.at[prev, 'XPOS'])
+                else:
+                    print("here: name", row.name)
+            else:
+                print(xpos)
             return pd.Series([upos, feats])
 
         # self.segmented_sentence[['UPOS', 'FEATS']] = self.segmented_sentence.apply(change_previous_row, axis=1)

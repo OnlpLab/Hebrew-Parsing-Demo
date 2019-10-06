@@ -129,35 +129,39 @@
          </div>
         </div>
       </div>
-      <!--<div class="card-block">-->
-      <!--<button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-ud-parser" aria-expanded="false" aria-controls="collapse-ud-parser">UD Scheme</button>-->
-        <!--<div class="collapse multi-collapse" id="collapse-ud-parser">-->
-             <!--&lt;!&ndash;<button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'relations')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>&ndash;&gt;-->
-            <!--&lt;!&ndash;<button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'relations')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>&ndash;&gt;-->
+      <div class="card-block">
+      <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-ud-parser" aria-expanded="false" aria-controls="collapse-ud-parser">UD Scheme</button>
+        <div class="collapse multi-collapse" id="collapse-ud-parser">
+             <!--<button class="feedback correct" data-toggle="tooltip" data-placement="top" title="Correct" onclick="report(this, 'v' ,'relations')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>-->
+            <!--<button class="feedback incorrect" data-toggle="tooltip" data-placement="top" title="Incorrect" onclick="report(this,'x',  'relations')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>-->
 
-          <!--<div class="card card-body row">-->
-              <!--<div class="col-sm-5", id="ud">-->
-                  <!--&lt;!&ndash;{{converted}}&ndash;&gt;-->
-                <!--<table>-->
-                    <!--<tr>-->
-                        <!--<th>FORM</th>-->
-                        <!--<th>LEMMA</th>-->
-                        <!--<th>UPOS</th>-->
-                        <!--<th>FEATS</th>-->
-                    <!--</tr>-->
-                    <!--{% for item in converted %}-->
-                    <!--<tr>-->
-                        <!--<td>{{item.FORM}}</td>-->
-                        <!--<td>{{item.LEMMA}}</td>-->
-                        <!--<td>{{item.UPOS}}</td>-->
-                        <!--<td>{{item.FEATS}}</td>-->
-                    <!--</tr>-->
-                    <!--{% endfor %}-->
-                <!--</table>-->
-              <!--</div>-->
-         <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
+          <div class="card card-body row">
+              <div class="col-sm-5", id="ud">
+                  <!--{{converted}}-->
+                <table>
+                    <tr>
+                        <th>FORM</th>
+                        <th>LEMMA</th>
+                        <th>UPOS</th>
+                        <th>FEATS</th>
+                    </tr>
+                    {% for item in converted %}
+                    <tr>
+                        <td>{{item.FORM}}</td>
+                        <td>{{item.LEMMA}}</td>
+                        <td>{{item.UPOS}}</td>
+                        <td>{{item.FEATS}}</td>
+                    </tr>
+                    {% if 'xx_UD_REL' in item.FEATS %}
+                        <div>* The feature 'xx_UD_REL' is a placeholder that at the moment only holds information about the
+                        UD dependency relation, if derivable.</div>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+              </div>
+         </div>
+        </div>
+      </div>
       <button class="card-header " type="button" data-toggle="collapse" data-target="#collapse-lattices-parser" aria-expanded="false" aria-controls="collapse-lattices-parser">Lattices</button>
       <div class="card-block">
         <div class="collapse multi-collapse" id="collapse-lattices-parser">

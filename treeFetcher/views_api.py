@@ -35,16 +35,16 @@ def submit_utterance(request):
                 conll = parse_data['dep_tree']
                 converted_conll = Convert_SPMRL_to_UD(conll)
                 # TODO: fix conversion (see notes in spmrl_to_ud.py) and uncomment the lines below + in index.html
-                # converted_conll.apply_conversions(feats=basic_features, simple_pos=basic_pos,
-                #                                   complex_pos_conversions=entire_line_pos_conversion)
-                # converted = converted_conll.segmented_sentence
+                converted_conll.apply_conversions(feats=basic_features, simple_pos=basic_pos,
+                                                  complex_pos_conversions=entire_line_pos_conversion)
+                converted = converted_conll.segmented_sentence
                 segments = segment_query(conll)
                 pos = pos_tagger(conll)
                 relations = show_dependencies(conll)
                 lemmas = get_lemmas(conll)
                 morph = morphological_analyzer(lattice)
-                # converted = converted[['FORM', 'LEMMA', 'UPOS', 'FEATS']].to_dict(orient='index')
-                # converted = [v for v in converted.values()]
+                converted = converted[['FORM', 'LEMMA', 'UPOS', 'FEATS']].to_dict(orient='index')
+                converted = [v for v in converted.values()]
             except KeyError:
                 pos = "error"
                 send_bad_input(query)
