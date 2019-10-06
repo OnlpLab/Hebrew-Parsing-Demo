@@ -1,10 +1,44 @@
 {% extends "base.html" %}
-{% block title %}About YAP{% endblock %}
+{% block title %}ONLP-LAB::About YAP{% endblock %}
 {% load static%}
 {% block content %}
 
 <h3 class="page-title">About</h3>
 <section style="width: 70%;">
+        <div id="google_translate_element"></div>
+
+        <h3>General</h3>
+    <p>
+        YAP provides a complete automatic, morphological and syntactic annotation for Hebrew texts. The code in freely
+        available in our git page <a href="https://github.com/OnlpLab/yap", target="_blank">here</a>.
+        The model is based on <a href="https://www.mitpressjournals.org/doi/full/10.1162/tacl_a_00253",
+                                                              target="_blank">More et al. 2019 </a>
+    </p>
+
+        <h3>Citation</h3>
+    <p>
+        If you make use of this parser or software for research, please cite:
+    </p>
+    <p>
+        <pre>
+            <code>
+@article{more-etal-2019-joint,
+    title = "Joint Transition-Based Models for Morpho-Syntactic Parsing: Parsing Strategies
+            for {MRL}s and a Case Study from Modern {H}ebrew",
+    author = "More, Amir  and
+            Seker, Amit  and
+            Basmova, Victoria  and
+            Tsarfaty, Reut",
+    journal = "Transactions of the Association for Computational Linguistics",
+    volume = "7",
+    year = "2019",
+    url = "https://www.aclweb.org/anthology/Q19-1003",
+    doi = "10.1162/tacl_a_00253",
+    pages = "33--48",
+}
+            </code>
+        </pre>
+    <h3>Background</h3>
     <p>
     Computational models for the automatic analysis of natural language texts which were originally developed for parsing
         Europen languages are not well suited  for the analysis of languages that exhibit strong interaction between
@@ -46,29 +80,6 @@
         from the Hebrew nespaper Haaretz. Yap is under active development and documentation.  The project page can be found
         <a href="https://github.com/OnlpLab/yap" target="_blank">here</a>.  </p>
     <p>If you have any questions or comments, do not hesitate to <a href="mailto:reutts@openu.ac.il" target="_blank">get in touch</a>. </p>
-    <p>
-        If you make use of this parser or software for research, we would appreciate the following citation:
-    </p>
-        <h3>Citation</h3>
-    <p>
-        <pre>
-            <code>
-@article{more-etal-2019-joint,
-    title = "Joint Transition-Based Models for Morpho-Syntactic Parsing: Parsing Strategies
-            for {MRL}s and a Case Study from Modern {H}ebrew",
-    author = "More, Amir  and
-            Seker, Amit  and
-            Basmova, Victoria  and
-            Tsarfaty, Reut",
-    journal = "Transactions of the Association for Computational Linguistics",
-    volume = "7",
-    year = "2019",
-    url = "https://www.aclweb.org/anthology/Q19-1003",
-    doi = "10.1162/tacl_a_00253",
-    pages = "33--48",
-}
-            </code>
-        </pre>
 
 
 

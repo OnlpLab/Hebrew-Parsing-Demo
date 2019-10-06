@@ -23,13 +23,14 @@ from treeFetcher import views, views_api
 
 urlpatterns = [
     #path('', views.submit_utterance, name="home"),
-    path('', views_api.submit_utterance, name="demo"),
-    path('conll-reader', views.submit_conll, name="conll-reader"),
+    path('', views.landing_page, name="home"),
+    path('hebrew', views_api.submit_utterance, name="demo"),
+    # path('conll-reader', views.submit_conll, name="conll-reader"),
+    path('resources', views.resources, name="resources"),
     path('documentation', views.documentation, name="documentation"),
     path('faq', views.faq, name="faq"),
     path('admin/', admin.site.urls),
     path('contact', views.contact, name="contact"),
     path('about', views.about, name="about"),
-    path('home', views.landing_page, name="home"),
 
 ]

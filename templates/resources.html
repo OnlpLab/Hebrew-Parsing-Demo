@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}ONLP-LAB::RESOURCES{% endblock %}
+{% load static%}
+{% block content %}
+
+<h3 class="page-title">Resources</h3>
+<section>
+
+<h2>Universal Dependencies Resources</h2>
+
+    <h4>POS tags (ADJ, NOUN etc.):</h4>
+https://universaldependencies.org/u/pos/index.html
+
+    <h4>Syntactic relations (nsubj, advmod etc.):</h4>
+https://universaldependencies.org/u/dep/index.html
+
+    <h4>features (gender, number, etc.):</h4>
+https://universaldependencies.org/u/feat/index.html
+
+    <h4>General Information about Hebrew treebank</h4>
+https://universaldependencies.org/treebanks/he_htb/index.html
+
+    <h4>Hebrew scheme documentation</h4>
+https://github.com/UniversalDependencies/docs/blob/pages-source/_he/index.md
+
+
+    <h4>Hebrew Treebank dev set</h4>
+https://github.com/UniversalDependencies/UD_Hebrew-HTB/blob/dev/he_htb-ud-dev.conllu
+
+<h4>"What's Wrong with Hebrew NLP? And How to Make it Right" - a simple explanation and tagging examples</h4>
+    https://arxiv.org/abs/1908.05453
+
+    <h4>MILA Lexicon (re-formatted at BGU)</h4>
+    https://raw.githubusercontent.com/OnlpLab/yap/master/data/bgulex/bgulex.utf8.hr
+</section>
+
+{% endblock %}
