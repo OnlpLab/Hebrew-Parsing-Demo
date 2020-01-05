@@ -82,7 +82,7 @@ def morphological_analyzer(conll):
     morph = []
     for lemma in lemmas:
         if (lemma[4] != "PUNCT") and ('-' not in lemma[2]):
-            morph.append({'token': lemma[2], 'feats': lemma[5].replace("|", "\t\t").replace("_", "\t")})
+            morph.append({'token': lemma[2], 'feats': lemma[6].replace("|", "\t\t").replace("_", "\t")})
     return morph
 
 

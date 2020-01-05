@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% block title %}SPMRL Dependencies{% endblock %}
+{% load static%}
+{% block content %}
+
+<h3 class="page-title">SPMRL Dependencies</h3>
+
+
+<h4>acomp: adjectival complement</h4>
+<div>ectival complement of a verb is an adjectival phrase which functions as the complement (like an object of the verb).</div>
+האם התיאוריה אודות קנוניה נגדך נראית סבירה?
+<div>acomp(סבירה ,נראית)</div>
+
+<h4>amod: adjectival modifier</h4>
+ An adjectival modifier of an NP is any adjectival phrase that serves to modify the meaning of the NP.
+אולי עוד קצת בזיליקום וקורטוב פלפל אדום.
+<div>amod(אדום, פלפל)</div>
+
+<h4>advmod: adverb modifier</h4>
+<div>erb modifier of a word is a (non-clausal) adverb or adverb-headed phrase that serves to modify the meaning of the word.</div>
+.אני הרגשתי פתאום כאילו אני מאבד אותה סופית
+<div>advmod(סופית, מאבד)</div>
+
+<h4>appos: appositional modifier</h4>
+An appositional modifier of an NP is an NP immediately to the right of the first NP that serves to define or modify that NP. It includes parenthesized examples, as well as defining abbreviations in one of these structures.
+.היי, אני מייקל שרמר, מנהל אגודת הספקנים
+<div>appos(מנהל, מייקל)</div>
+(פוקיפסי (עיר הולדתי
+<div>appos(עיר, פוקיפסי)</div>
+<div>לכוהוליסטים אנונימיים</div>
+<div> ,אלכוהוליסטים) AA(</div>
+
+<h4>aux: auxiliary  or feature-bundle</h4>
+Originally, in the English SD version, an auxiliary of a clause is a non-main verb of the clause, e.g., a modal auxiliary, or a form of “be”, “do” or “have” in a periphrastic tense. In the Hebrew Treebank the label aux  is usually used for the verb היה that functions as a copula.
+.אני לא הייתי גונבת לך את הכלב
+<div>aux(הייתי, גונבת)</div>
+
+<h4>cc: coordination</h4>
+<div>dination is the relation between an element of a conjunct and the coordinating conjunction word of the conjunct. In the English version, one conjunct of a conjunction (normally the first) is considered to be the head of the conjunction. In the Hebrew version the coordinating conjunction itself is considered to be the head both conjuncts depend upon.  Therefore, the coordinating conjunction is labeled cc only when it is at the root of the sentence. Otherwise it can receive any label depending on the role of the conjoining elements in the sentence.</div>
+.בבית כל מה שאני אוכל זה סושי וירקות
+<div>cc(N/A, ו)</div>
+However when the coordinating conjunction is at the beginning of the sentence, it depends on the predicate.
+.אבל נשיג את התוצאות שהמעסיק שלי ביקש
+<div>cc(אבל, נשיג)</div>
+
+<h4>ccomp: clausal complement</h4>
+<div>sal complement of a verb or adjective is a dependent clause with an internal subject which functions like an object of the verb, or adjective. Clausal complements for nouns are limited to complement clauses with a subset of nouns like עובדה  )“fact") or  טענה (“claim”).</div>
+In the English version the clausal complement depends on the predicate of the main clause. In the Hebrew version the clausal complement depends on the subordinating conjunction that introduces it.
+.הוא אומר שכל דבר כאן שייך לו
+<div>ccomp(שייך, ש)</div>
+אני טוען כי זה טוב לכולנו.
+<div>ccomp(טוב, כי)</div>
+?האם אתה בטוח שגילית זאת אתמול
+<div>ccomp(גילית, ש)</div>
+?למה להסתיר את העובדה שהוא עובד באבטחה
+<div>ccomp(עובד, ש)</div>
+
+<div>Also, in the Hebrew version when a subordinate clause is introduced by a multiword conjunction whose last element is ש מפני ש, למרות ש) etc.) ,  the predicate of the subordinate clause is also labeled as a ccomp depending on the word ש.</div>
+ביקשתי ממך לקפוץ, משום שקיבלתי את התוצאות.
+<div>ccomp(קיבלתי, ש)</div>
+
+<div>Besides, in the Hebrew version ccomp is used for labeling the subordinate conjunctions,כאילו  אם (when introducing a conditional clause),  כש  and כאשר.</div>
+
+.אם אתה אוהב אותי תפסיק עם השטויות האלה
+<div>ccomp(אם, תפסיק)</div>
+
+
+<h4>comp: complementizer</h4>
+<div>abel is usually used for the subordinating conjunctions introducing a complementary clause or prepositions that link a word with its complement (usually labeled as pobj)</div>
+הוא לא התלונן על כאב כלשהו
+<div>על, התלונן)</div>
+אני טוען כי זה טוב לכולנו.
+<div>comp(כי, טוען)</div>
+
+
+compound
+Used as a label for objects of prepositions that, together with the prepositions, form a set phrase.
+הוא השתנה מאד במהלך הקריירה שלו
+<div>nd (מהלך, ב)</div>
+
+complmn
+Is used for labeling the subordinating conjunction ש at the root of the sentence
+לא רק שהוא בא הוא רוצה להביא את חברה
+<div>complmn(N/A, ש)</div>
+
+<h4>conj: conjunct</h4>
+In the English version, a conjunct is the relation between two elements connected by a coordinating conjunction, such as “and”, “or”, etc. Conjunctions are treated asymmetrically: the head of the relation is the first conjunct and other conjunctions depend on it via the conj relation.</h4>
+In the Hebrew version, both conjuncts depend on the coordinating conjunction.
+.בבית כל מה שאני אוכל זה סושי וירקות
+<div>conj(סושי, ו)</div>
+<div>conj(ירקות, ו)</div>
+?איזה צבע אתה מעדיף - כחול או אדום
+<div>conj(כחול, או)</div>
+<div>conj(אדום, או)</div>
+
+<h4>cop: copula</h4>
+In the English version, A copula is the relation between the complement of a copular verb and the copular verb. Normally is a dependant of its complement
+However, in Hebrew the copula is not always a verb. When it is not a verb it is  labeled as cop. When it is a verb it is labeled as aux.
+. העבודה שלי היא מאוד חשובה
+<div>cop(היא, חשובה)</div>
+
+<h4>def: definite marker</h4>
+A special case of det, definiteness marker ה.
+.אעבור ליד הבית שלך בערך בשלוש
+<div>def(ה, בית)</div>
+
+<h4>dep: dependent</h4>
+A dependency is labeled as dep when the system is unable to determine a more precise dependency relation between two words. This may be because of a weird grammatical construction, a limitation in the Stanford Dependency conversion software, a parser error, or because of an unresolved long distance dependency.
+
+<h4>det: determiner</h4>
+A determiner is the relation between the word  and its determiner.
+<div>ew determiner includes demonstrative pronouns (ילד זה), quantifiers (כל, הרבה, אף) etc.</div>
+אף מילה לתקשורת מבלי שתגיד הבנתי.
+<div>det(אף, מילה)</div>
+
+<h4>discourse: discourse element</h4>
+    This is used for interjections and other discourse particles and elements (which are not clearly linked to the structure of the sentence, except in an expressive way). For English,  generally follows the guidelines of what the Penn Treebanks count as an INTJ. They define this to include: interjections (oh, uh-huh, Welcome), fillers (um, ah), and discourse markers (well, like, actually, but not you know). Also includes emojis.</h4></div>
+.אה, אתה הבחור מהכיתה של סנדי
+<div>discourse(אה, בחור)</div>
+
+<h4>gen : genitive case</h4>
+Is used for labeling the preposition של  after a noun with a personal suffix
+אתה יודע שהשגחתי על ביתו של אביך לאחר שעזבתם.
+<div>gen(של, ביתו)</div>
+
+<h4>ghd: genitive head of a nominal phrase.</h4>
+Usually used in smixut at the root of the sentence.
+הזיה היא מחלת הלילה
+<div>ghd(N/A, מחלת)</div>
+
+<h4>gobj: genitive object</h4>
+Is used to label the depending word of smixut as well as the objects of the preposition של.
+טעית כשלא הקשבת לשיר של הילד הזה.
+<div>gobj(ילד, של)</div>
+הזיה היא מחלת הלילה.
+<div>gobj(לילה, מחלת)</div>
+
+<h4>hd: head</h4>
+Head of any kind.
+<div>abel is systematically used for direct objects preceded by the accusative marker  את(labeled as obj).</div>
+.אתה חייב לאכול את האוכל שלך
+<div>hd(אוכל, את)</div>
+
+<h4>mod: modifier</h4>
+Modifiers of any kind.
+<div>abel is systematically applied to infinitive verbal modifiers that are used to modify the meaning of an NP (in the English version  such modifiers fall under “vmod”).</div>
+.אמרו שהם מצאו דרך לעשות קופה
+<div>mod(לעשות, דרך)</div>
+
+<h4>mwe: multi-word expression</h4>
+<div>lti-word expression (modifier) relation is used for certain multi-word idioms that behave like a single function word. For English, it is used for a closed set of dependencies between words in common multi-word expressions for which it seems difficult or unclear to assign any other relationships.</div>
+. התבקשתי להתקשר אליך על ידי ידיד במוסקבה
+<div>mwe(ידי, על)</div>
+
+<h4>neg: negation modifier</h4>
+The negation modifier is the relation between a negation word and the word it modifies.
+.הוא לא מדבר על הסרט
+<div>neg(לא, מדבר)</div>
+.אם תרצו אין זו אגדה
+<div>neg(אין, אגדה)</div>
+
+<h4>nn: noun compound modifier</h4>
+In the English version, a noun compound modifier of an NP is any noun that serves to modify the head noun.
+In the Hebrew Treebank nn is used to label parts of multiword proper nouns.
+מנחם בגין היה מפקד האצ"ל
+<div>nn(בגין, מנחם)</div>
+
+<h4>num: numeric modifier</h4>
+A numeric modifier of a noun is any number phrase that serves to modify the meaning of the noun with a quantity.
+.ברגע שאנחנו ממלאים שישה קרונות מרשים לנו לנוח
+<div>ישה, קרונות)</div>
+
+<h4>number: element of compound number</h4>
+An element of compound number is a part of a number phrase or currency amount. We regard a number as a specialized kind of multi-word expression.
+.שלושת אלפים חיילים לא יכלו לעצור אותם
+<div>number(שלושת, אלפים)</div>
+
+<h4>obj : direct object</h4>
+<div>rect object of a VP is the noun phrase which is the (accusative) object of the verb.</div>
+In Hebrew there are two possible occurrences of direct object.  When the head is indefinite then it would usually be the dependent of the main verb. If the phrase is definite, then it is introduced with an accusative  marker  את, which is marked as obj, and the object itself is labeled as hd depending on את. In the English version the corresponding label is dobj.
+.אנחנו רוצים לאכול אוכל טוב ובריא
+<div>obj(אוכל, לאכול)</div>
+.אתה חייב לאכול את האוכל שלך
+<div>obj(את, לאכול)</div>
+<div>hd(אוכל, את)</div>
+
+<h4>parataxis: parataxis</h4>
+<div>rataxis relation (from Greek for “place side by side”) is a relation between the main verb of a clause and other sentential elements, such as a sentential parenthetical, a clause after a “:” or a “;”, or two sentences placed side by side without any explicit coordination or subordination.</div>
+.אני מבינה שאינך יכול לחזות, חשבתי שאולי תוכל להעריך
+<div>parataxis(חשבתי, מבינה)</div>
+In the Hebrew version, however, is systematically used for parenthesis:
+.למעשה, אני יוצאת לסרט עם בוטניקאי
+<div>parataxis(למעשה, יוצאת)</div>
+
+<h4>pcomp: prepositional complement</h4>
+<div>s used when the complement of a preposition is a clause or prepositional phrase (or occasionally, an adverbial phrase). The prepositional complement of a preposition is the head of a clause following the preposition, or the preposition head of the following PP.</div>
+
+.אבל זה לא תלוי במקרה, אלא על האם אנחנו ניצור את הידע המתאים בזמן
+<div>pcomp(ניצור, על)</div>
+.אני מחפשת את אשר אתה מחפש, אדוני
+<div>pcomp(מחפש, את)</div>
+. אתה צריך להגיד את זה כדי להאמין
+<div>pcomp(להאמין, כדי)</div>
+
+<h4>pobj: object of a preposition</h4>
+ The object of a preposition is the head of a noun phrase following the preposition
+.אנו אוהבים להתלונן על הגופים הממשלתיים
+<div>pobj(גופים, על)</div>
+
+<h4>posspmod: possessive modifier</h4>
+<div>or the preposition של (except when it follows a noun with a personal suffix in which case it is labeled gen)</div>
+
+טעית כשלא הקשבת לשיר של הילד הזה
+<div>posspmod(של, שיר)</div>
+
+prepmod :prepositional modifier
+<div>e English version – usually prep)</div>
+A prepositional modifier of a verb, adjective, or noun is a preposition introducing any prepositional phrase or a clause  that serves to modify the meaning of the verb, adjective, noun, or even another preposition.
+חתול עם כובע ראיתי
+<div>prepmod(עם, חתול)</div>
+ראיתי חתול עם טלסקופ
+<div>prepmod(עם, ראיתי)</div>
+.היא ממש יפה עם השיער הבלונדיני שלה
+<div>prepmod(עם, יפה)</div>
+. אתה צריך להגיד את זה כדי להאמין
+<div>prepmod(כדי, צריך)</div>
+
+<h4>punct: punctuation</h4>
+This is used for any piece of punctuation in a clause, if punctuation is being retained in the typed dependencies.
+.אתה מקסים
+<div>punct(., מקסים)</div>
+
+<h4>prd : verbal predicate</h4>
+A verbal predicate at the root of the sentence
+. אתה צריך להגיד את זה כדי להאמין
+<div>prd (N/A, צריך)</div>
+
+In the Hebrew version can be also non-verbal.
+זה נכון.
+<div>prd (N/A, נכון)</div>
+
+<h4>qaux : question auxiliary</h4>
+This label is used for the word האם when it introduces a question.
+
+האם התיאוריה אודות קנוניה נגדך נראית סבירה?
+<div>(האם,נראית)qaux</div>
+
+<h4>rcmod: relative clause modifier</h4>
+In the English version, a relative clause modifier of an NP is a relative clause modifying the NP. The relation points from the head noun of the NP to the head of the relative clause, normally a verb.
+In the Hebrew version, however, this label  is used to label the subordinating conjunction introducing a relative clause.
+.תתאר את האדם שנתן לכם כסף
+<div>rcmod(ש, אדם)</div>
+
+<h4>relcomp: relative clause complement</h4>
+The relation between an rcmod and the head of the relative clause it introduces
+.תתאר את האדם שנתן לכם כסף
+<div>(נתן, ש)relcomp</div>
+
+<h4>subj: nominal subject</h4>
+A nominal subject is a noun phrase which is the syntactic subject of a clause. The governor of this relation might not always be a verb. This label is the equivalent of nsubj in the English version.
+.אז הבית שלך הרבה יותר יפה
+<div>subj(בית, יפה)</div>
+.היא גדלה באחוזה בה ההורים שלו עבדו
+<div>subj (היא, גדלה)</div>
+
+<h4>tmod: temporal modifier</h4>
+<div>oral modifier (of a VP, NP, or an ADJP is a bare noun phrase constituent that serves to modify the meaning of the constituent by specifying a time. (Other temporal modifiers are either prepositional phrases introduced as prep or adverbs labeled as advmod.)</div>
+?מי היתה האישה שבאה לביתו כל יום
+<div>tmod(באה, יום)</div>
+
+<h4>xcomp: open clausal complement</h4>
+<div>n clausal complement (xcomp) of a verb or an adjective is a predicative or clausal complement without its own subject. The reference of the subject is necessarily determined by an argument external to the xcomp (normally by the object of the next higher clause, if there is one, or else by the subject of the next higher clause. These complements are always non-finite, and they are complements (arguments of the higher verb or adjective) rather than adjuncts/modifiers, such as a purpose clause. The name xcomp is borrowed from Lexical-Functional Grammar</div>
+ביקשתי ממנו לעזור לי
+<div>xcomp(לעזור, ביקשתי)</div>
+אנחנו מחשיבים אותו למורה טוב.
+<div>xcomp(מורה, מחשיבים)</div>
+אני אוהבת להתעורר ושיש משהו לצפות לו.
+<div>xcomp(להתעורר,אוהבת)</div>
+בשביל החתונה הזאת אני מוכן לעשות כל שיידרש.
+<div>xcomp(לעשות, מוכן)</div>
+אתה רומז שהאבא ביקש ממנו לשקר?
+<div>xcomp(לשקר,ביקש)</div>
+זה שבאת באמת עושה אותך חבר טוב
+<div>xcomp(חבר, עושה)</div>
+שלושה בתי משפט שונים מצאו אותו אשם.
+<div>xcomp(אשם, מצאו)</div>
+
+
+
+{% endblock %}

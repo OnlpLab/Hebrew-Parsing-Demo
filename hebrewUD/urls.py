@@ -32,5 +32,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contact', views.contact, name="contact"),
     path('about', views.about, name="about"),
+    path('postags', views.postags, name="postags"),
+    path('spmrl_dependencies', views.spmrl_dependencies, name="spmrl_dependencies"),
+    path('spmrl_features', views.spmrl_features, name="spmrl_features")
 
 ]
