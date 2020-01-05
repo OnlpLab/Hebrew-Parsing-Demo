@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}SPMRL Features{% endblock %}
+  {% load static%}
+  {% block content %}
+
+<h3 class="page-title">SPMRL Morphological Features</h3>
+
+<section>
+    <table>
+      <tr>
+        <th>Label</th>
+        <th>Feature</th>
+        <th>Possible values</th>
+      </tr>
+<tr>
+    <th>gen</th>
+    <td>Gender</td>
+    <td>F (feminine), M (masculine)</td>
+</tr>
+<tr>
+    <th>num</th>
+    <td>Number</td>
+    <td>S (singular), P (plural), D (dual)</td>
+</tr>
+    <th>per</th>
+    <td>Person</td>
+    <td>1, 2, 3, A (all)</td>
+    </tr>
+<tr>
+    <th>tense</th>
+    <td>Tense or mood</td>
+    <td>BEINONI, PAST, FUTURE, IMPERATIVE</td>
+    </tr>
+<tr>
+    <th>suf_gen</th>
+    <td>Gender of pronominal suffix</td>
+    <td>F (feminiמe), M (masculine)</td>
+    </tr>
+<tr>
+    <th>suf_num</th>
+    <td>Number of pronominal suffix</td>
+    <td>S (singular), P (plural)</td>
+    </tr>
+<tr>
+    <th>suf_per</th>
+    <td>Person of pronominal suffix</td>
+    <td>1,2,3</td>
+</tr>
+
+</table>
+</section>
+
+
+{% endblock %}
+
+

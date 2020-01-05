@@ -96,6 +96,10 @@ font-weight: 700;
     .navbar-inverse .navbar-nav>li>a{
         padding: 5px;
     }
+
+    table, th, td {
+        padding-bottom: 5px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -129,6 +133,8 @@ font-weight: 700;
 .img-container {
 margin-top: 30px;
 }
+
+
 
 /*-------------------------------*/
 /*             NavBar            */

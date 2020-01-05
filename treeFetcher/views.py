@@ -38,6 +38,19 @@ def landing_page(request):
 def about(request):
     return render(request, 'about.html')
 
+
+def postags(request):
+    return render(request, 'postags.html')
+
+
+def spmrl_dependencies(request):
+    return render(request, 'spmrl_dependencies.html')
+
+def spmrl_features(request):
+    return render(request, 'spmrl_features.html')
+
+
+
 def submit_utterance(request):
     dep_output = '/home/shoval/repos/openU/hebrew-dependency-viewer/treeFetcher/parsing_handler/yapproj/src/yap/data/dep_output.conll'
     lattices = ''
