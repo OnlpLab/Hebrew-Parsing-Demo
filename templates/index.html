@@ -152,12 +152,12 @@
                         <td>{{item.UPOS}}</td>
                         <td>{{item.FEATS}}</td>
                     </tr>
-                    {% if 'xx_UD_REL' in item.FEATS %}
-                        <div>* The feature 'xx_UD_REL' is a placeholder that at the moment only holds information about the
-                        UD dependency relation, if derivable.</div>
-                    {% endif %}
                     {% endfor %}
                 </table>
+              <div>* The feature 'xx_UD_REL' is a placeholder that at the moment only holds information about the
+                    UD dependency relation, if derivable.</div>
+                  <div>* The features are only as derivable from the existing features in the SPMRL scheme.
+                      Note that YAP was not trained on many existing UD features and thus cannot predict them.</div>
               </div>
          </div>
         </div>
