@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.conf.urls import include, url
 from treeFetcher import views, views_api
 
@@ -23,8 +23,8 @@ from treeFetcher import views, views_api
 
 urlpatterns = [
     #path('', views.submit_utterance, name="home"),
-    path('', views.landing_page, name="home"),
-    path('hebrew', views_api.submit_utterance, name="demo"),
+    path('home', views.landing_page, name="home"),
+    path('', views_api.submit_utterance, name="demo"),
     # path('conll-reader', views.submit_conll, name="conll-reader"),
     path('resources', views.resources, name="resources"),
     path('documentation', views.documentation, name="documentation"),
