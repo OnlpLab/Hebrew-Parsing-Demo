@@ -69,3 +69,20 @@ def send_wrong_parse():
 def send_correct_parse():
     pass
 
+def submit_conll(request):
+    query = ""
+    pos = ""
+    relations = ""
+    segments = ""
+    morph = ''
+    if request.method == 'GET':
+        form = ConllForm
+    else:
+        form = ConllForm(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data.get('utterance')
+            segments = segment_query(query)
+            pos = pos_tagger(query)
+            morph = morphological_analyzer(query)
+            relations = show_dependencies(query.rstrip("\n"))
+    return render(request, "conll-reader.html", {'form': form, 'pos': pos, 'relations': relations, 'segments': segments, 'query': query, 'morph': morph})

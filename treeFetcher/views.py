@@ -27,12 +27,12 @@ def landing_page(request):
             name = contact.cleaned_data.get('contact_name')
             everything = "Name: %s\n\nSubject: %s\n\nEmail: %s \n\nMessage: %s \n\n"%(str(name), str(subject), str(from_email), str(message))
             try:
-                send_mail(subject, everything, from_email, ['onlp.openu@gmail.com', 'reutts@openu.ac.il'])
+                send_mail(subject, everything, from_email, ['onlp.biu@gmail.com'])#, 'reut.tsarfaty@biu.ac.il'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             sent = True
             messages.success(request, 'Your message was successfully sent. Thank you!')
-            return redirect('/home#contact')
+            return redirect('https://nlp.biu.ac.il/~rtsarfaty/onlp#contact')
     return render(request, "home.html", {'contact': contact, 'sent': sent})
 
 def about(request):
@@ -49,51 +49,6 @@ def spmrl_dependencies(request):
 def spmrl_features(request):
     return render(request, 'spmrl_features.html')
 
-
-
-def submit_utterance(request):
-    dep_output = '/home/shoval/repos/openU/hebrew-dependency-viewer/treeFetcher/parsing_handler/yapproj/src/yap/data/dep_output.conll'
-    lattices = ''
-    query = ""
-    pos = ""
-    relations = ""
-    segments = ''
-    morph = ''
-    feedback = "thank you for your feedback"
-    if request.method == 'GET':
-        form = UtteranceForm
-    else:
-        form = UtteranceForm(request.POST)
-        if form.is_valid():
-            query = form.cleaned_data.get('utterance')
-            parsing = parse_sentence(query)
-            parsing.wait()
-            segments = segment_query()
-            pos = pos_tagger()
-            morph = morphological_analyzer()
-            relations = show_dependencies()
-            lattices_output = '/home/shoval/repos/openU/hebrew-dependency-viewer/treeFetcher/parsing_handler/yapproj/src/yap/data/lattices.conll'
-            with open(lattices_output) as file:
-                lattices = file.read().replace("\t", "      ")
-    return render(request, "index.html", {'form': form, 'pos': pos, 'morph': morph, 'relations': relations, 'segments': segments, 'query': query, 'lattices': lattices, 'feedback': feedback})
-
-def submit_conll(request):
-    query = ""
-    pos = ""
-    relations = ""
-    segments = ""
-    morph = ''
-    if request.method == 'GET':
-        form = ConllForm
-    else:
-        form = ConllForm(request.POST)
-        if form.is_valid():
-            query = form.cleaned_data.get('utterance')
-            segments = segment_query(query)
-            pos = pos_tagger(query)
-            morph = morphological_analyzer(query)
-            relations = show_dependencies(query.rstrip("\n"))
-    return render(request, "conll-reader.html", {'form': form, 'pos': pos, 'relations': relations, 'segments': segments, 'query': query, 'morph': morph})
 
 def documentation(request):
     # relations = DepCategory.objects.all()
@@ -121,11 +76,12 @@ def contact(request):
             name = contact.cleaned_data.get('contact_name')
             everything = "Name: %s\n\nSubject: %s\n\nEmail: %s \n\nMessage: %s \n\n"%(str(name), str(subject), str(from_email), str(message))
             try:
-                send_mail(subject, everything, from_email, ['onlp.openu@gmail.com', 'reutts@openu.ac.il'])
+                send_mail(subject, everything, from_email, ['onlp.biu@gmail.com'])#, 'reut.tsarfaty@biu.ac.il'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             sent = True
-            return redirect('contact')
+            messages.success(request, 'Your message was successfully sent. Thank you!')
+            return redirect('https://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/contact')
     return render(request, "contact.html", {'contact': contact, 'sent': sent})
 
 
