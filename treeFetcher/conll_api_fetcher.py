@@ -63,7 +63,7 @@ def pos_tagger(conll):
     pos = []
     for lemma in lemmas:
         if (lemma[3] != "PUNCT") and ('-' not in lemma[0]):
-            pos.append({'token': lemma[2], 'xpos': lemma[3]})
+            pos.append({'token': lemma[1], 'xpos': lemma[3]})
     return pos
 
 def get_lemmas(conll):
