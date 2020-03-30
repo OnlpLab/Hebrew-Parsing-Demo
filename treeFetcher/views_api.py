@@ -1,4 +1,4 @@
-from .conll_api_fetcher import parse_sentence, morphological_analyzer, show_dependencies, segment_query, pos_tagger, get_lemmas, parse_lattice
+from .conll_api_fetcher import parse_sentence, morphological_analyzer, show_dependencies, segment_query, pos_tagger, get_lemmas, parse_lattice, convert_to_displacy_format
 from .spmrl_to_ud import Convert_SPMRL_to_UD, basic_features, basic_pos, entire_line_pos_conversion
 from django.shortcuts import render, redirect
 from .forms import UtteranceForm
@@ -20,6 +20,7 @@ def submit_utterance(request):
     lemmas = ''
     lattice_table = ''
     converted = ''
+    graph = ''
 
     if request.method == 'GET':
         form = UtteranceForm
@@ -33,6 +34,7 @@ def submit_utterance(request):
                 lattices = parse_data['ma_lattice']
                 lattice_table = parse_lattice(lattices)
                 conll = parse_data['dep_tree']
+
                 converted_conll = Convert_SPMRL_to_UD(conll)
                 # TODO: fix conversion (see notes in spmrl_to_ud.py) and uncomment the lines below + in index.html
                 converted_conll.apply_conversions(feats=basic_features, simple_pos=basic_pos,
@@ -43,6 +45,10 @@ def submit_utterance(request):
                 relations = show_dependencies(conll)
                 lemmas = get_lemmas(conll)
                 morph = morphological_analyzer(lattice)
+                try:
+                    graph = convert_to_displacy_format(conll)
+                except:
+                    print("bad graph: \n", conll)
                 converted = converted[['FORM', 'LEMMA', 'UPOS', 'FEATS']].to_dict(orient='index')
                 converted = [v for v in converted.values()]
             except KeyError:
@@ -51,7 +57,8 @@ def submit_utterance(request):
     return render(request, "index.html", {'form': form, 'pos': pos, 'lemmas': lemmas, 'morph': morph,
                                           'relations': relations, 'segments': segments, 'query': query,
                                           'lattices': lattice_table,
-                                          'converted': converted
+                                          'converted': converted,
+                                          'graph': graph
                                           })
 
 

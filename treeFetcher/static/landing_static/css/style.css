@@ -223,6 +223,11 @@ h2.bnr-sub-title {
 	height: auto;
 }
 
+#site_logo {
+    width: 30%;
+    height: auto;
+}
+
 .bnr-para {
   font-weight: 300;
 }

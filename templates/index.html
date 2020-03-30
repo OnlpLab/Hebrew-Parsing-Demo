@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Open University of Israel | ONLP Lab | Hebrew Parser{% endblock %}
+{% block title %}Bar Ilan University | ONLP Lab | Hebrew Parser{% endblock %}
 {% load static %}
 {% block content %}
 
@@ -19,7 +19,9 @@
         <strong>Segmented Text: </strong>{{segments}}
 
     </h3>
-    <div class="analysis">
+    <div style="overflow-x: auto; size: 50%;">{{graph|safe}}</div>
+
+<div class="analysis">
       <h4>Please select level of analysis to display:</h4>
       <!--<h5>In each you can mark <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> for a perfect parse or <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> for an incorrect one.</h5>-->
       <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-pos-parser" aria-expanded="false" aria-controls="collapse-pos-parser">Part of Speech Tags</button>

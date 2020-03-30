@@ -2,6 +2,8 @@ import requests
 import json
 import re
 import pandas as pd
+from spacy import displacy
+
 
 # curl -s -X GET -H 'Content-Type: application/json' -d'{"text": "גנן גידל דגן בגן  "}' localhost:8000/yap/heb/pipeline | jq -r '.dep_tree' | sed -e 's/\\t/\t/g' -e 's/\\n/\n/g'
 # url = "http://onlp.openu.org.il:8000/yap/heb/joint"
@@ -121,6 +123,40 @@ def show_dependencies(conll):
         # trees.append(tree)
     # return "\n".join(trees)
     return trees
+
+
+def convert_to_displacy_format(conll):
+    displacy_style = {
+        "collapse_punct": False,
+        "collapse_phrases": False,
+        "compact": False,
+        "distance": 120,
+        "word_spacing": 30,
+        "arrow_stroke": 1,
+        "font": "IBM Plex Mono,monospace",
+        # "direction": "rtl"
+    }
+
+    displacy_input = {"words": [], "arcs": []}
+    lines = conll.split("\n")
+    for line in lines:
+        if line.strip():
+            line = line.split("\t")
+            print(line)
+            displacy_input["words"].append({"text": line[1], "tag": line[4]})
+            if int(line[0]) < int(line[6]):
+                direction = "left"
+                end = int(line[6]) - 1
+                start = int(line[0]) -1
+            else:
+                direction = "right"
+                end = int(line[0]) -1
+                start = int(line[6]) -1
+            if line[7] != "ROOT":
+                displacy_input["arcs"].append({"start": start, "end": end, "label": line[7], "dir": direction})
+    svg_tree = displacy.render(displacy_input, options=displacy_style, manual=True)
+    return svg_tree
+
 
 
 if __name__ == "__main__":
