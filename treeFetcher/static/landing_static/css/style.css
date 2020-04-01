@@ -282,6 +282,12 @@ features
 	background-color: #F3F4F8;
 }
 
+#about-nlpro {
+	width: 100% !important;
+	background-color: #F3F4F8;
+}
+
+
 .title, .service-title {
   font-family: 'Fira Sans', sans-serif;
   font-size: 35px;
@@ -901,3 +907,13 @@ Responsive media queries
     text-align: center;
   }
 }
+
+.dropdown-menu {
+    background: transparent;
+}
+
+.dropdown-item {
+    background: transparent;
+    color: #fff;
+}
+
