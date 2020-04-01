@@ -14,6 +14,27 @@ import time
 def home(request):
     return render(request, 'index.html')
 
+def nlpro(request):
+    sent = False
+    if request.method == 'GET':
+        contact = ContactForm()
+    else:
+        contact = ContactForm(request.POST)
+        if contact.is_valid():
+            subject = contact.cleaned_data.get('subject')
+            from_email = contact.cleaned_data.get('contact_email')
+            message = contact.cleaned_data.get('message')
+            name = contact.cleaned_data.get('contact_name')
+            everything = "Name: %s\n\nSubject: %s\n\nEmail: %s \n\nMessage: %s \n\n"%(str(name), str(subject), str(from_email), str(message))
+            try:
+                send_mail(subject, everything, from_email, ['onlp.biu@gmail.com'])#, 'reut.tsarfaty@biu.ac.il'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            sent = True
+            messages.success(request, 'Your message was successfully sent. Thank you!')
+            return redirect('https://nlp.biu.ac.il/~rtsarfaty/onlp#contact')
+    return render(request, "nlpro.html", {'contact': contact, 'sent': sent})
+
 def landing_page(request):
     sent = False
     if request.method == 'GET':
