@@ -28,10 +28,10 @@
     <div class="header">
       <div class="bg-color">
         <header id="main-header">
-          <nav class="navbar navbar-default navbar-fixed-top top-nav-collapse">
+          <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
               <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar-nlpro">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -56,7 +56,7 @@
         <div class="wrapper">
           <div class="container">
             <div class="row">
-              <div class="banner-info text-center wow fadeIn delay-05s">
+              <div class="banner-info text-center wow fadeIn delay-05s" style="padding: 120px;">
 				
                 <h2 class="bnr-sub-title">NLPRO</h2>
 				<h3 class="bnr-sub-title">Natural Language Programming </h3>
@@ -76,20 +76,19 @@
           </div>
 		  <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="service-item">
-              <h3><span>T</span>BD</h3>
-              <p>TBD</p>
+              <p>Can we program computers in our native tongue? This idea, termed natural language programming, has attracted attention almost since the inception of computers themselves.
+From the point of view of software engineering (SE), efforts to program in natural language (NL) have relied thus far on controlled natural languages (CNL) – small unambiguous fragments of English. Yet, CNLs are very restricted and their expression is artificial. Is it possible to replace CNL with truly natural, human language? </p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="service-item">
-              <h3><span>T</span>BD</h3>
-              <p>TBD</p>        
+              <p>From the point of view of natural language processing (NLP), current technology successfully extracts static information from NL texts. However, human-like NL understanding goes far beyond such extraction – it requires dynamic interpretation processes which affect, and is affected by, the environment, update states and lead to action. So, is it possible to endow computers with this kind of dynamic NL understanding?</p>        
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="service-item">
-              <h3><span>T</span>BD</h3>
-              <p> TBD</p>
+              <p> 
+The ambitious, cross-disciplinary, goal of this project is to induce ``NL compilers’’ that are able to accept a natural language description as input and map it to an executable system. These compilers will continuously acquire NL understanding (NLU) capacity via learning from signals involving verification, simulation, synthesis or user feedback. Such NL compilers will have vast applications in AI, SE, robotics and cognitive computing, and will fundamentally change the way humans and computers interact.</p>
             </div>
           </div>
 
@@ -161,24 +160,48 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="blog-sec">
               <div class="blog-img">
-                <img src="../static/landing_static/img/naturl-lng-prog.png" class="img-responsive">
+                <img src="../static/landing_static/img/bridging.jpg" class="img-responsive">
               </div>
               <div class="blog-info">
                 <h3>Representation:</h3>
 				<h2>The Empty Elements Project</h2>
-				<p>Text TBD</p>
+                <p>
+                <b>Empty elements</b> are elements left out by the speaker and inferred by the hearer. They are central to obtaining human-like language understanding. 
+                Some examples of empty elements are:
+                </p>
+                <ul>
+                <li>Fused heads: I bought three apples and ate two [<em>apples</em>].</li>
+                <li>Verb-phrase ellipsis: John bought books, Jane didn’t [<em>buy books</em>].</li>
+                <li>Aspectual verb constructions: I finished [<em>reading? writing?</em>] the book.</li>
+                <li>Bridging: I love these shoes. The color [<em>of the shoes</em>] is beautiful!.</li>
+                </ul>
+                <p>
+                In this project we investigate Empty Elements Expansion (EEE), a challenge wherein we aim to automatically recognize and resolve such empty elements in texts. 
+                </p>
+                <p>
+                <b>Bridging</b>, for example, is a (non-identity) implicit relation between two nouns in the text. For example in the sentence “I entered the <b>room</b>. The <b>ceiling</b> was high” there is an implicit part-whole relation between “the ceiling” and “the room”, yielding the “complete” expression “the ceiling [<em>of the room</em>]”. How can we collect data concerning those missing elements? How can we design learning models to infer them? How can these empty elements aid Natural Language Understanding applications, and in particular, Natural Language Programming?
+                </p>
+                <p>
+                For more detail about bridging and the data collection interface, check out our introduction and qualification <a href="http://35.234.106.224:8080/bridging/intro" target="_blank">tests</a> and our <a href="http://35.234.106.224:8080/bridging/tool/1" target="_blank">annotation tool</a>.
+                </p>
               </div>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="blog-sec">
               <div class="blog-img">
-                  <img src="../static/landing_static/img/ccg0.png" class="img-responsive">
+                  <img src="../static/landing_static/img/navigation.png" class="img-responsive">
               </div>
               <div class="blog-info">
-                <h3>Modeling:</h3>
+                <h3>Models:</h3>
 				<h2>Natural Language Navigation</h2>
-				<p>Text TBD</p>
+				<p>
+                Following navigation instructions in natural language requires a composition of language, action, and knowledge of the environment. Knowledge of the environment may be provided via visual sensors or as a symbolic world representation referred to as a map. This project aims at learning to ground objects using multimodal world knowledge. This project has been selected this year (2020) to receive funds from Google Faculty Research Award.
+                </p>
+                <p>
+                For materials, data sets and models, <a href=”https://github.com/tzuf/RUN” target=”blank”>follow us</a>.
+                </p>
+
               </div>
             </div>
 		   </div>
@@ -188,7 +211,7 @@
                 <img src="../static/landing_static/img/Hexagon-butterfly.PNG" class="img-responsive">
               </div>
               <div class="blog-info">
-				<h3>Application:</h3>
+				<h3>Applications:</h3>
 				<h2>NLPRO-CT: Nurturing Computational Thinking Skills with Natural Language Programming</h2>
 				<p>In the NLPRO-CT we develop and use NLPRO semantic parsers to build accessible educational apps that enhance young students’ Computational Thinking (CT) skills. </p>
 				<p>The Hexagon Board App is our first app being developed in this framework. In this conversational app users verbally instruct the automatic painter how to draw their desired image on a kids board game paved with hexagonal tiles. To reach that goal we created two complementary apps to collect the initial dataset required to train our model. The dataset is comprised of corresponding pairs of images and drawing procedure. The first version is used to create those pairs whereas the second one is used to ensure the quality of those pairs. </p> 
