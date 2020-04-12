@@ -3,6 +3,7 @@ import json
 import re
 import pandas as pd
 from spacy import displacy
+import base64
 
 
 # curl -s -X GET -H 'Content-Type: application/json' -d'{"text": "גנן גידל דגן בגן  "}' localhost:8000/yap/heb/pipeline | jq -r '.dep_tree' | sed -e 's/\\t/\t/g' -e 's/\\n/\n/g'
@@ -142,7 +143,6 @@ def convert_to_displacy_format(conll):
     for line in lines:
         if line.strip():
             line = line.split("\t")
-            print(line)
             displacy_input["words"].append({"text": line[1], "tag": line[4]})
             if int(line[0]) < int(line[6]):
                 direction = "left"
@@ -155,11 +155,8 @@ def convert_to_displacy_format(conll):
             if line[7] != "ROOT":
                 displacy_input["arcs"].append({"start": start, "end": end, "label": line[7], "dir": direction})
     svg_tree = displacy.render(displacy_input, options=displacy_style, manual=True)
+    
+    b64 = base64.b64encode(svg_tree.encode('utf-8')).decode("utf-8")
+    svg_tree = r'<img src="data:image/svg+xml;base64,%s"/>' % b64
+    
     return svg_tree
-
-
-
-if __name__ == "__main__":
-    utterance = "שלום,  שנה טובה לכולם"
-    parsed = parse_sentence(utterance)
-    # print(utterance)

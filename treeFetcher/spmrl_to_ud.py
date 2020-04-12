@@ -88,7 +88,6 @@ class Convert_SPMRL_to_UD():
 
             # #TODO: check why this is here
             elif row['XPOS'] == 'S_PRN':
-                print(output_df.loc[i-1])
                 if output_df.loc[i-1]['XPOS'] == 'AT':
                     output_df.at[i - 1, 'FEATS'] = 'Case=Acc'
                 elif output_df.loc[i - 1]['LEMMA'] == 'של':
@@ -139,7 +138,6 @@ class Convert_SPMRL_to_UD():
                     output_df = output_df.append(row, ignore_index=True)
             else:
                 output_df = output_df.append(row, ignore_index=True)
-        print(output_df)
         return output_df
 
     def apply_conversions(self, feats=None, simple_pos=None, complex_pos_conversions=None):
@@ -156,13 +154,10 @@ class Convert_SPMRL_to_UD():
                     if self.df.at[prev, 'XPOS'] == 'ADP':
                         try:
                             prev_feats = self.df.at[prev, 'FEATS']
-                            print(prev_feats)
                         except:
                             print(prev)
-                        print("I am after xpos", prev)
                         self.segmented_sentence.at[prev, 'XPOS'] = 'ADP'
                         self.segmented_sentence.at[prev, 'FEATS'] = 'Case=Gen'
-                        print(self.segmented_sentence.at[prev, 'FEATS'])
                         upos = 'PRON'
                         feats += '|PronType=Prs'
                     else:
@@ -297,7 +292,6 @@ if __name__ == '__main__':
 #
     converter.apply_conversions(feats=basic_features, simple_pos=basic_pos, complex_pos_conversions=entire_line_pos_conversion)
 #
-    print(converter.segmented_sentence)
 #     # print(converter.segmented_sentence[])
 #     # columns = ['ID', 'FORM', 'LEMMA', 'UPOS', 'XPOS', 'FEATS', 'HEAD', 'DEPREL', 'DEPS', 'MISC']
 #     # converter.segmented_sentence.to_csv('./data/check.conllu', sep='\t', columns=columns, quoting=csv.QUOTE_NONE)
