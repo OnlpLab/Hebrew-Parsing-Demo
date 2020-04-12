@@ -3,13 +3,16 @@
 /*-------------------------------*/
 
 
-
 body {
     line-height: 2;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 5%;
 }
 
+
+main {
+    margin-top: 0px;
+}
 
 pre code {
   background-color: #e6f2ff;
@@ -59,7 +62,7 @@ font-weight: 700;
 
 @media (max-width: 1200px) {
     main {
-        margin-top: 150px;
+        margin-top: 20px;
         margin-right: 10px;
         margin-left: 10px;
 
@@ -213,11 +216,14 @@ margin-top: 30px;
 }
 
 .card-header{
-    margin: 5px;
+    background-color: rgba(64, 75, 97, 0.9);
+    color: white;
+    margin: 0px;
     margin-left: 5px;
     width: 95%;
-    height: 30px;
+    padding: 1%;
     text-align: left;
+    border-radius: 10px;
 }
 
 /* .collapse{
@@ -232,8 +238,11 @@ margin-top: 30px;
 
 .btn{
     border-color: black;
-    background-color: #ccc;
+    color: white;
+    background-color: rgba(64, 75, 97, 0.9);
     margin-top: 10px;
+    padding: 10px;
+    font-size: larger;
 }
 
 .collapsed{

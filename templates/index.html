@@ -2,9 +2,10 @@
 {% block title %}Bar Ilan University | ONLP Lab | Hebrew Parser{% endblock %}
 {% load static %}
 {% block content %}
+ <h3 class="page-title">Hebrew Parser - Demo</h3>
 
-<h3 class="page-title">Hebrew Parser</h3>
-<h4>Morphological and Syntactic Analysis of Hebrew Texts</h4>
+<!-- <h3 class="page-title">Hebrew Parser</h3>
+<h4>Morphological and Syntactic Analysis of Hebrew Texts</h4> -->
       <form method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}"/>
