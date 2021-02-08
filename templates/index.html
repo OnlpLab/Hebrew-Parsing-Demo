@@ -6,7 +6,7 @@
 
 <!-- <h3 class="page-title">Hebrew Parser</h3>
 <h4>Morphological and Syntactic Analysis of Hebrew Texts</h4> -->
-      <form method="post">
+      <form method="post" action="#analysis">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}"/>
        {% for field in form %}
@@ -14,6 +14,7 @@
     {% endfor %}
     <button class="btn" type="submit">Submit</button>
   </form>
+<div class="section-padding wow fadeInUp delay-05s" id="analysis">
 {% if query != "" %}
   {% if pos != "error" %}
     <h3 style="margin-top:30px;">
@@ -22,7 +23,6 @@
     </h3>
     <div style="overflow-x: auto; size: 50%;">{{graph|safe}}</div>
 
-<div class="analysis">
       <h4>Please select level of analysis to display:</h4>
       <!--<h5>In each you can mark <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> for a perfect parse or <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> for an incorrect one.</h5>-->
       <button class="card-header" type="button" data-toggle="collapse" data-target="#collapse-pos-parser" aria-expanded="false" aria-controls="collapse-pos-parser">Part of Speech Tags</button>

@@ -7,8 +7,8 @@ import base64
 
 
 # curl -s -X GET -H 'Content-Type: application/json' -d'{"text": "גנן גידל דגן בגן  "}' localhost:8000/yap/heb/pipeline | jq -r '.dep_tree' | sed -e 's/\\t/\t/g' -e 's/\\n/\n/g'
-# url = "http://onlp.openu.org.il:8000/yap/heb/joint"
-url = "http://localhost:8000/yap/heb/joint"
+url = "http://onlp.openu.org.il:8000/yap/heb/joint"
+# url = "http://localhost:8000/yap/heb/joint"
 
 
 
@@ -17,6 +17,7 @@ def call_yap_webapi(utterance) -> dict:
     response = requests.post(url,
                              data=data.encode('utf-8'),
                              headers={'Content-type': 'applications/json'})
+    print(response)
     return response.json()
 #
 def space_punctuation(utterance):

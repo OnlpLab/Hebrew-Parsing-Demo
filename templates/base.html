@@ -6,14 +6,20 @@
     <title>{% block title %}{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="the ONLP lab runs research on Natural Language Processing (NLP), specifically on Hebrew parsing and NLProg (text-to-code).">
+    <meta name="keywords" content="Hebrew NLP, NLProc, ONLP, Reut Tsarfaty, YAP, text to code , hebrew parsing">
+    <meta name="description" content="the ONLP lab runs research on Natural Language Processing (NLP), specifically on Hebrew parsing and NLProg (text-to-code).">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/landing_static/css/jquery.bxslider.css">
+    <link rel="stylesheet" type="text/css" href="static/landing_static/css/font-awesome.min.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
     <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon.ico">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="static/landing_static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="static/landing_static/css/animate.css">
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
     </head>
@@ -22,7 +28,7 @@
       <div id="myDiv-hebrew">
         <div class="header">
           <div class="bg-color">
-            <header>
+            <header id="main-header-hebrew">
               <nav class="navbar navbar-default navbar-fixed-top top-nav-collapse">
                 <div class="container">
                   <div class="navbar-header">
@@ -84,7 +90,14 @@ function googleTranslateEntireSite() {
     new google.translate.translateElement({pageLanguage: 'en'}, 'google_translate_element');
 }
 </script>
+  <script src="static/landing_static/js/jquery.min.js"></script>
+  <script src="static/landing_static/js/jquery.easing.min.js"></script>
+  <script src="static/landing_static/js/bootstrap.min.js"></script>
+  <script src="static/landing_static/js/wow.js"></script>
+  <script src="static/landing_static/js/jquery.bxslider.min.js"></script>
+  <script src="static/landing_static/js/custom.js"></script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?
 cb=googleTranslateEntireSite"></script>
+
 </body>
 </html>
