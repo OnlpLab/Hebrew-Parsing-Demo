@@ -12,35 +12,65 @@
 
     <!-- <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
     <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon.ico">
-    <!--<link rel="stylesheet" href="static/landing_static/css/style.css">-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="static/landing_static/css/style.css">
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
     </head>
     <body>
-    <header>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-          <!--<a class="navbar-brand" href="{% url 'demo' %}"><img class="img-responsive" id="logo" src="static/images/onlp_logo.png"></a>-->
-          <a class="navbar-brand" href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew">ONLP<span class="logo-dec">Lab</span></a>
-          <ul class="nav navbar-nav">
-<!--             <li><a href="{% url 'about' %}">About</a></li> -->
-              <li><a href="https://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/about">About</a></li>         
-<!--             <li><a href="{% url 'demo' %}">Demo</a></li> -->
-              <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew">Demo</a></li>
-<!--             <li><a href="{% url 'resources' %}">Resources</a></li> -->
-              <li><a href="https://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/resources">Resources</a></li>         
-<!--             <li><a href="{% url 'documentation' %}">Documentation</a></li> -->
-              <li><a href="https://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/documentation">Documentation</a></li>         
-            <!--li><a href="{% url 'faq' %}">FAQ</a></li-->
-            <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/faq">FAQ</a></li>
-            <!--li><a href="{% url 'contact' %}">Contact Us</a></li-->
-            <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/contact">Contact Us</a></li>
-            <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-            <li class="nav-icons"><a href="https://github.com/OnlpLab/yap" target="_blank"><i class="fa fa-github"></i></a></li>
-            <li class="nav-icons"><a href="https://twitter.com/OnlpLab" target="_blank"><i class="fa fa-twitter"></i></a></li>
+    <div class="loader">
+      <div id="myDiv-hebrew">
+        <div class="header">
+          <div class="bg-color">
+            <header>
+              <nav class="navbar navbar-default navbar-fixed-top top-nav-collapse">
+                <div class="container">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar-hebrew">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                      <a class="navbar-brand" href="http://nlp.biu.ac.il/~rtsarfaty/onlp">ONLP<span class="logo-dec">Lab</span></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar-hebrew">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="https://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/about">About</a></li>         
+                      <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew">Demo</a></li>
+                      <li><a href="https://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/documentation">Documentation</a></li>        
+                      <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/resources">Resources</a></li>
+                        
+                      <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/faq">FAQ</a></li>
+                      <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp/hebrew/contact">Contact Us</a></li>
+                      <li><a href="http://nlp.biu.ac.il/~rtsarfaty/onlp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                      <li class="nav-icons"><a href="https://github.com/OnlpLab/yap" target="_blank"><i class="fa fa-github"></i></a></li>
+                      <li class="nav-icons"><a href="https://twitter.com/OnlpLab" target="_blank"><i class="fa fa-twitter"></i></a></li>
           </ul>
+                          </div>
+                          </div>
       </nav>
-    </header>
+                    </header>
+                    <div class="wrapper">
+                      <div class="container">
+                        <div class="row">
+                          <div class="banner-info text-center wow fadeIn delay-05s" style="padding: 120px;">
+
+                            <h2 class="bnr-sub-title">HEBREW PARSER</h2>
+                            <h3 class="bnr-sub-title">Morphological and Syntactic Analysis of Hebrew Texts</h3>
+                            <p class="bnr-para">Research project directed by Prof. Reut Tsarfaty in the ONLP lab<br></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 <main>
     {%block content%}
     {%endblock%}

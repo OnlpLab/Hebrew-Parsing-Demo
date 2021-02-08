@@ -53,12 +53,9 @@ def conll_to_list(utterance=None):
                 lemmas.append(parts)
     else:
         lemmas = []
-        print(utterance)
         for line in utterance.split("\n"):
-            print("line: ", line)
             parts = [part for part in line.split("\t")]
             lemmas.append(parts)
-        print("lemmas", lemmas)
     return lemmas
 
 
