@@ -29,7 +29,6 @@ def submit_utterance(request):
         if form.is_valid():
             query = form.cleaned_data.get('utterance')
             parse_data = parse_sentence(query)
-            print(parse_data)
             try:
                 lattice = parse_data['md_lattice']
                 lattices = parse_data['ma_lattice']
