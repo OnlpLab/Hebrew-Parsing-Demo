@@ -21,4 +21,4 @@ six==1.13.0
 spacy==2.2.3
 sqlparse==0.3.0
 tqdm==4.41.1
-urllib3==1.25.7
+urllib3==1.25.8
